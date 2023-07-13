@@ -39,7 +39,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = ','
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -192,6 +192,10 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    'lervag/vimtex',
+    ft = 'tex'
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -269,6 +273,10 @@ vim.o.termguicolors = true
 
 -- Set markdown preview browser
 vim.g.mkdp_browser = '/Applications/Google Chrome.app'
+
+-- Vimtex configuration
+vim.g.vimtex_compiler_method = 'latexmk'
+vim.g.vimtex_view_method = 'skim'
 
 -- [[ Basic Keymaps ]]
 
