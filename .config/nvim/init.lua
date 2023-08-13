@@ -277,6 +277,7 @@ vim.g.mkdp_browser = '/Applications/Google Chrome.app'
 -- Vimtex configuration
 vim.g.vimtex_compiler_method = 'latexmk'
 vim.g.vimtex_view_method = 'skim'
+vim.g.tex_flavor = 'latex'
 
 -- [[ Basic Keymaps ]]
 
@@ -555,6 +556,7 @@ cmp.setup {
 require('live-server').setup {
   args = { '--browser=Google Chrome' },
 }
+
 -- [[Configure toggleterm]]
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
