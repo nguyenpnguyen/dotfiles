@@ -8,3 +8,5 @@ vim.g.maplocalleader = ","
 vim.g.vimtex_compiler_method = "latexmk"
 vim.g.vimtex_view_method = "skim"
 vim.g.tex_flavor = "latex"
+
+vim.treesitter.language.register("html", "ejs")

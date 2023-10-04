@@ -16,6 +16,7 @@ return {
               },
             },
           },
+          ["core.summary"] = { strategy = "default" },
         },
       })
     end,
