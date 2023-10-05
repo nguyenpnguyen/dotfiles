@@ -6,3 +6,8 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.ejs",
   command = "set filetype=ejs",
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.md", "*.html", "*.ejs", "*.tex" },
+  command = "setlocal wrap",
+})
