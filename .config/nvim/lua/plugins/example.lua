@@ -150,6 +150,7 @@ return {
         "html",
         "javascript",
         "json",
+        "jsx",
         "lua",
         "markdown",
         "markdown_inline",
