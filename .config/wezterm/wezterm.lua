@@ -13,6 +13,10 @@ config.color_scheme = "Tokyo Night Storm"
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 
+config.inactive_pane_hsb = {
+	saturation = 0.7,
+	brightness = 0.6,
+}
 -- Font config
 config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 14.0
