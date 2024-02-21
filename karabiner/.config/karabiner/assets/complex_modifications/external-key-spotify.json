@@ -1,0 +1,63 @@
+{
+  "title": "Media keys only control Spotify.app - for external keyboard",
+  "rules": [
+    {
+      "description": "page_up for ⏪ (back track) key should only control Spotify.",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "page_up"
+          },
+          "to_if_alone": [
+            {
+              "shell_command": "osascript -e 'tell application \"Spotify\" to previous track'"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "shell_command": "osascript -e 'tell application \"Spotify\" to rewind'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "insert for ⏯ (play/pause) key should only control Spotify.",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "insert"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e 'tell application \"Spotify\" to playpause'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "page_down for ⏩ (next track) key should only control Spotify.",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "page_down"
+          },
+          "to_if_alone": [
+            {
+              "shell_command": "osascript -e 'tell application \"Spotify\" to next track'"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "shell_command": "osascript -e 'tell application \"Spotify\" to fast forward'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "rest-client.enableTelemetry": false,
+  "workbench.colorTheme": "Catppuccin Frappé",
+  "files.autoSave": "onFocusChange",
+  "editor.fontSize": 14,
+  "editor.fontFamily": "FiraCode Nerd Font, monospace",
+  "terminal.external.osxExec": "Wezterm.app",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font, monospace",
+  "editor.fontLigatures": true,
+  "html.format.templating": true,
+  "editor.formatOnSave": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "editor.lineNumbers": "relative",
+  "editor.guides.bracketPairs": true
+}
+
