@@ -83,7 +83,23 @@ config.keys = {
 		mods = "LEADER",
 		action = act.CloseCurrentPane({ confirm = true }),
 	},
-
+	{
+		key = "w",
+		mods = "CTRL",
+		action = act.CloseCurrentTab { confirm = false },
+	},
+	{
+		key = "t",
+		mods = "CTRL",
+		action = act.SpawnTab 'CurrentPaneDomain',
+	},
+	{
+		key = "t",
+		mods = "CTRL|SHIFT",
+		action = act.SpawnTab {
+			DomainName = 'unix',
+		},
+	},
 	-- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
 	-- {
 	-- 	key = "a",
@@ -91,5 +107,20 @@ config.keys = {
 	-- 	action = act.SendKey({ key = "a", mods = "CTRL" }),
 	-- },
 }
+
+-- Use ctrl modifier for tab switching
+for i = 1, 9 do
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = 'CTRL',
+		action = act.ActivateTab(i - 1),
+	})
+
+	table.insert(config.keys, {
+		key = 'F' .. tostring(i),
+		mods = 'CTRL',
+		action = act.ActivateTab(i - 1),
+	})
+end
 
 return config
