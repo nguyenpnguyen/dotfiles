@@ -7,7 +7,7 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod1
+set $mod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -26,6 +26,13 @@ set $rofi_cmd rofi \
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+
+# Theme
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Catppuccin-Macchiato-Standard-Blue-Dark'
+    gsettings set $gnome-schema font-name 'Roboto'
+}
 
 ### Output configuration
 #
@@ -57,10 +64,9 @@ exec swayidle -w \
 #
 # Example configuration:
 #
-input "2:14:SynPS/2_Synaptics_TouchPad" {
-    dwt enabled
+input "ELAN0676:00 04F3:3195 Touchpad" {
     tap enabled
-    natural_scroll enabled
+    natural_scroll enabled 
     middle_emulation enabled
 }
 
