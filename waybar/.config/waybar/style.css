@@ -2,15 +2,10 @@
   border: none;
   border-radius: 0;
   padding: 0 5 0 5px;
-  font-family:
-    FontAwesome,
-    Open Sans,
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  min-height: 0;
+  font-family: "Inter", "FontAwesome", "Roboto", "Open Sans", "Helvetica",
+    "Arial", sans-serif;
+  font-size: 15px;
+  min-height: 27px;
 }
 
 window#waybar {
