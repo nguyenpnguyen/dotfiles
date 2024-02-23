@@ -34,6 +34,10 @@ exec_always {
     gsettings set $gnome-schema font-name 'Open Sans'
 }
 
+# Hide title bar
+default_border pixel 3
+default_floating_border pixel 3
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
