@@ -31,7 +31,7 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Catppuccin-Macchiato-Standard-Blue-Dark'
-    gsettings set $gnome-schema font-name 'Roboto'
+    gsettings set $gnome-schema font-name 'Open Sans'
 }
 
 ### Output configuration
