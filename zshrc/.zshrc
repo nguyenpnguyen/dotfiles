@@ -1,4 +1,4 @@
-# If you come from bash you might have to change your $PATH.
+#If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -74,7 +74,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autocomplete)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 
 # User configuration
@@ -104,10 +104,8 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # pfetch
-export PF_INFO="ascii title os host kernel pkgs de wm shell editor palette"
+export PF_INFO="ascii title os host kernel pkgs de shell editor palette"
 
-source $ZSH/oh-my-zsh.sh
-pfetch
 
 # pnpm
 export PNPM_HOME="/Users/nguyennguyen/Library/pnpm"
@@ -116,3 +114,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+pfetch
+source $ZSH/oh-my-zsh.sh
