@@ -51,12 +51,20 @@ output HDMI-A-1 resolution 1920x1200@74.930Hz position 1920,0
 output eDP-1 resolution 1920x1200@60.001Hz position 0,0 scale 1.0 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+# Pin workspaces to output
+workspace 1 output HDMI-A-1
+workspace 2 output HDMI-A-1
+workspace 3 output HDMI-A-1
+workspace 4 output HDMI-A-1
+
+workspace 7 output eDP-1
+workspace 8 output eDP-1
 ### Idle configuration
 #
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
+         timeout 300 'dim && swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
 #
@@ -218,6 +226,10 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# Laptop swipe to change ws
+bindgesture swipe:right workspace next 
+bindgesture swipe:left workspace prev 
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d

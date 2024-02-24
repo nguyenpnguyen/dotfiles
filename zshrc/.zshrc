@@ -1,13 +1,12 @@
 #If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH:$GOROOT/bin:$GOPATH/bin
 
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -108,7 +107,7 @@ export PF_INFO="ascii title os host kernel pkgs de shell editor palette"
 
 
 # pnpm
-export PNPM_HOME="/Users/nguyennguyen/Library/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;

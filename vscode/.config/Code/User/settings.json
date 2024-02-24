@@ -1,10 +1,9 @@
 {
   "rest-client.enableTelemetry": false,
-  "workbench.colorTheme": "Catppuccin Frappé",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "files.autoSave": "onFocusChange",
-  "editor.fontSize": 14,
   "editor.fontFamily": "FiraCode Nerd Font, monospace",
-  "terminal.external.osxExec": "Wezterm.app",
+  "terminal.external.osxExec": "wezterm",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontFamily": "FiraCode Nerd Font, monospace",
   "editor.fontLigatures": true,
@@ -15,6 +14,8 @@
     "asvetliakov.vscode-neovim": 1
   },
   "editor.lineNumbers": "relative",
-  "editor.guides.bracketPairs": true
+  "editor.guides.bracketPairs": true,
+  "workbench.iconTheme": "catppuccin-mocha",
+  "svelte.enable-ts-plugin": true,
+  "editor.fontSize": 15
 }
-
