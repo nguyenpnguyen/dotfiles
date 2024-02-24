@@ -5,9 +5,9 @@
     // "width": 1280, // Waybar width
     "spacing": 2, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media", "keyboard-state",],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media", "keyboard-state"],
     "modules-center": ["sway/window"],
-    "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight",  "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["mpd", "pulseaudio", "cpu", "memory", "temperature", "backlight", "network",  "battery", "battery#bat2", "custom/wlsunset", "clock", "tray"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -165,6 +165,10 @@
         "escape": true,
         // "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
+    },
+    "custom/wlsunset":{
+        "format": "󰈋",
+        "on-click-right": "bash ~/.config/waybar/scripts/sunONOFF.sh",
+  },
 }
 
