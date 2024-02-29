@@ -18,7 +18,7 @@ config.inactive_pane_hsb = {
 	brightness = 0.6,
 }
 -- Font config
-config.font = wezterm.font("FiraCode Nerd Font")
+config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 15.0
 
 -- Keybindings
@@ -82,11 +82,6 @@ config.keys = {
 		key = "w",
 		mods = "LEADER",
 		action = act.CloseCurrentPane({ confirm = true }),
-	},
-	{
-		key = "w",
-		mods = "CTRL|SHIFT",
-		action = act.CloseCurrentTab { confirm = false },
 	},
 	{
 		key = "t",

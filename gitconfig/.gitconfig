@@ -1,5 +1,9 @@
+[user]
+	name = Nguyen Phuc Nguyen 
+	email = nguyen.pn@proton.me
+	username = nguyenpnguyen
 [init]
 	defaultBranch = main
-[user]
-	email = nguyen.pn@proton.me
-	name = nguyenpnguyen
+[core]
+	editor = nvim
+

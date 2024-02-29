@@ -103,7 +103,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # pfetch
-export PF_INFO="ascii title os host kernel pkgs de shell editor palette"
+export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 
 
 # pnpm

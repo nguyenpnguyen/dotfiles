@@ -1,68 +1,243 @@
-* {
-  border: none;
-  border-radius: 0;
-  padding: 0 5 0 5px;
-  font-family: "Inter", "FontAwesome", "Roboto", "Open Sans", "Helvetica",
-    "Arial", sans-serif;
-  font-size: 15px;
-  min-height: 27px;
-}
+@keyframes blink-warning {
+  70% {
+    color: @wm_icon_bg;
+  }
 
-window#waybar {
-  color: white;
-}
-
-tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
-}
-tooltip label {
-  color: white;
-}
-
-#workspaces button {
-  background: transparent;
-  color: white;
-  border-top: 3px solid transparent;
-}
-
-#workspaces button.focused {
-  background: #64727d;
-  border-top: 3px solid white;
-}
-
-#mode,
-#clock,
-#battery {
-  padding: 0 8px;
-}
-
-#mode {
-  border-bottom: 3px solid white;
-}
-
-#battery {
-  color: white;
-}
-
-#battery.charging {
-  color: white;
-  /*background-color: #26a65b;*/
-}
-
-@keyframes blink {
   to {
-    background-color: #ffffff;
-    color: black;
+    color: @wm_icon_bg;
+    background-color: @warning_color;
   }
 }
 
-#battery.warning:not(.charging) {
-  background: #f53c3c;
-  color: white;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
+@keyframes blink-critical {
+  70% {
+    color: @wm_icon_bg;
+  }
+
+  to {
+    color: @wm_icon_bg;
+    background-color: @error_color;
+  }
+}
+
+/* Reset all styles */
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+  background: @theme_bg_color;
+  color: @theme_fg_color;
+  font-family: "Ubuntu", "Font Awesome 6 Free", "Font Awesome";
+  font-size: 15px;
+}
+
+#window {
+  margin-left: 10px;
+}
+
+window#waybar {
+  margin-left: 10px;
+  border-radius: 0;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#workspaces button {
+  /* To compensate for the top border and still have vertical centering */
+  padding: 0 0.5em;
+  margin: 4px 3px;
+  color: @wm_icon_bg;
+}
+
+#workspaces button.focused {
+  border-color: @theme_selected_bg_color;
+  color: @wm_icon_bg;
+  background-color: @theme_selected_bg_color;
+}
+
+#workspaces button.urgent {
+  border-color: @error_color;
+  color: @error_color;
+}
+
+#mode {
+  background: @background_color;
+}
+
+#clock,
+#custom-playerctl,
+#custom-power,
+#custom-scratchpad,
+#custom-weather,
+#custom-wlsunset,
+#custom-clipboard,
+#custom-menu,
+#custom-dnd,
+#battery,
+#cpu,
+#language,
+#memory,
+#network,
+#bluetooth,
+#pulseaudio,
+#tray,
+#mode,
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 4px 3px;
+}
+
+#clock {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#custom-weather {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#custom-wlsunset {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#custom-playerctl {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#custom-power {
+  background: #ed8796;
+  color: @theme_selected_fg_color;
+}
+
+#custom-scratchpad {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#custom-clipboard {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#custom-menu {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#custom-dnd {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#battery {
+  animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#battery.warning {
+  color: @warning_color;
+}
+
+#battery.critical {
+  color: @error_color;
+}
+
+#battery.warning.discharging {
+  animation-name: blink-warning;
+  animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+  animation-name: blink-critical;
+  animation-duration: 2s;
+}
+
+label:focus {
+  background-color: #000000;
+}
+
+#cpu {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#language {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#memory {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#custom-gpu-usage {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#network {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#bluetooth {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#bluetooth.disabled {
+  background: @theme_bg_color;
+  color: @wm_icon_bg;
+}
+
+#network.disconnected {
+  background: @theme_bg_color;
+  color: @wm_icon_bg;
+}
+
+#pulseaudio {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+#pulseaudio.muted {
+  background: @theme_bg_color;
+  color: @wm_icon_bg;
+}
+
+#custom-wf-recorder {
+  color: @error_color;
+  padding-right: 10px;
+}
+
+#tray {
+  background: @theme_bg_color;
+  color: @wm_icon_bg;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#idle_inhibitor {
+  background: @theme_selected_bg_color;
+}
+
+#idle_inhibitor.activated {
+  background: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
 }

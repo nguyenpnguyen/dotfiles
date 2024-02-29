@@ -1,6 +1,5 @@
 {
   "rest-client.enableTelemetry": false,
-  "workbench.colorTheme": "Catppuccin Mocha",
   "files.autoSave": "onFocusChange",
   "editor.fontFamily": "FiraCode Nerd Font, monospace",
   "terminal.external.osxExec": "wezterm",
@@ -15,7 +14,8 @@
   },
   "editor.lineNumbers": "relative",
   "editor.guides.bracketPairs": true,
-  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.iconTheme": "catppuccin-macchiato",
   "svelte.enable-ts-plugin": true,
-  "editor.fontSize": 15
+  "editor.fontSize": 15,
+  "workbench.colorTheme": "Catppuccin Macchiato"
 }
