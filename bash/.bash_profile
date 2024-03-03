@@ -60,6 +60,14 @@ PATH=$PATH:$HOME/.cargo/bin
 # PATH=$PATH:$HOME/bin:$JAVA_HOME/bin  
 # export JAVA_HOME  
 
+
+# Perl
+PATH="/home/nguyen/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/nguyen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/nguyen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/nguyen/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/nguyen/perl5"; export PERL_MM_OPT;
+
 # Pfetch-rs
 export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 
