@@ -20,16 +20,16 @@ vim.keymap.set('n', '<leader>f', '<Cmd>Format<CR>', { silent = true })
 vim.keymap.set('n', '<leader>q', '<Cmd>bd<CR>', { silent = true, desc = 'Close current buffer' })
 
 -- Move line
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==") -- move line up(n)
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==") -- move line down(n)
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")     -- move line up(n)
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")     -- move line down(n)
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
