@@ -8,6 +8,11 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+# environment variables:
+export THEME_DIR=$HOME/.themes
+export XDG_CONFIG_DIR=$HOME/.config
+export HYPRSHOT_DIR=$HOME/screenshots
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -27,7 +32,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Neovim
-PATH="$PATH:/opt/nvim-linux64/bin"
+PATH="$PATH:/usr/bin"
 export EDITOR=nvim
 
 # Nodejs
@@ -47,12 +52,13 @@ PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go/bin/
 
 # Rust
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
+PATH=$PATH:$HOME/.cargo/bin
 
 # Java
-JAVA_HOME=/usr/java/jdk-21.0.2
-PATH=$PATH:$HOME/bin:$JAVA_HOME/bin  
-export JAVA_HOME  
+# JAVA_HOME=/usr/bin/java
+# PATH=$PATH:$HOME/bin:$JAVA_HOME/bin  
+# export JAVA_HOME  
 
 # Pfetch-rs
 export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"

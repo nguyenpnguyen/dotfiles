@@ -14,7 +14,7 @@ case $(pulsemixer --get-mute) in
 esac
 
 notify-send \
-    --app-name sway \
+    --app-name hyprland \
     --expire-time 800 \
     --hint string:x-canonical-private-synchronous:volume \
     --hint "int:value:$VOLUME" \

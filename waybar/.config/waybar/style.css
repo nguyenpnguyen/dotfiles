@@ -1,243 +1,188 @@
-@keyframes blink-warning {
-  70% {
-    color: @wm_icon_bg;
-  }
+@import "./mocha.css";
 
-  to {
-    color: @wm_icon_bg;
-    background-color: @warning_color;
-  }
-}
-
-@keyframes blink-critical {
-  70% {
-    color: @wm_icon_bg;
-  }
-
-  to {
-    color: @wm_icon_bg;
-    background-color: @error_color;
-  }
-}
-
-/* Reset all styles */
+/* Global */
 * {
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 1rem;
+  border-radius: 0.8rem;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background-color: shade(@base, 0.9);
 }
 
-/* The whole bar */
-#waybar {
-  background: @theme_bg_color;
-  color: @theme_fg_color;
-  font-family: "Ubuntu", "Font Awesome 6 Free", "Font Awesome";
-  font-size: 15px;
+@keyframes blink_red {
+  to {
+    background-color: @red;
+    color: @base;
+  }
 }
 
-#window {
-  margin-left: 10px;
-}
-
-window#waybar {
-  margin-left: 10px;
-  border-radius: 0;
-}
-
-window#waybar.hidden {
-  opacity: 0.2;
-}
-
-#workspaces button {
-  /* To compensate for the top border and still have vertical centering */
-  padding: 0 0.5em;
-  margin: 4px 3px;
-  color: @wm_icon_bg;
-}
-
-#workspaces button.focused {
-  border-color: @theme_selected_bg_color;
-  color: @wm_icon_bg;
-  background-color: @theme_selected_bg_color;
-}
-
-#workspaces button.urgent {
-  border-color: @error_color;
-  color: @error_color;
-}
-
-#mode {
-  background: @background_color;
-}
-
-#clock,
-#custom-playerctl,
-#custom-power,
-#custom-scratchpad,
-#custom-weather,
-#custom-wlsunset,
-#custom-clipboard,
-#custom-menu,
-#custom-dnd,
-#battery,
-#cpu,
-#language,
-#memory,
-#network,
-#bluetooth,
-#pulseaudio,
-#tray,
-#mode,
-#idle_inhibitor {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 4px 3px;
-}
-
-#clock {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#custom-weather {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#custom-wlsunset {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#custom-playerctl {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#custom-power {
-  background: #ed8796;
-  color: @theme_selected_fg_color;
-}
-
-#custom-scratchpad {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#custom-clipboard {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#custom-menu {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#custom-dnd {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#battery {
+.warning,
+.critical,
+.urgent {
+  animation-name: blink_red;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
 }
 
-#battery.warning {
-  color: @warning_color;
+#clock,
+#memory,
+#temperature,
+#cpu,
+#mpd,
+#idle_inhibitor,
+#backlight,
+#pulseaudio,
+#network,
+#battery,
+#custom-wlsunset,
+#custom-media,
+#tray,
+#disk,
+#custom-pacman,
+#custom-scratchpad-indicator {
+  padding-left: .6rem;
+  padding-right: .6rem;
 }
 
-#battery.critical {
-  color: @error_color;
+/* Bar */
+window#waybar {
+  background-color: transparent;
 }
 
-#battery.warning.discharging {
-  animation-name: blink-warning;
-  animation-duration: 3s;
+window>box {
+  background-color: transparent;
+  margin: .3rem;
+  margin-bottom: 0;
 }
 
-#battery.critical.discharging {
-  animation-name: blink-critical;
-  animation-duration: 2s;
+
+/* Workspaces */
+#workspaces:hover {
+  background-color: @green;
 }
 
-label:focus {
-  background-color: #000000;
+#workspaces button {
+  padding-right: .4rem;
+  padding-left: .4rem;
+  padding-top: .1rem;
+  padding-bottom: .1rem;
+  color: @red;
+  /* border: .2px solid transparent; */
+  background: transparent;
+}
+
+#workspaces button.active {
+  color: @blue;
+}
+
+#workspaces button:hover {
+  /* border: .2px solid transparent; */
+  color: @rosewater;
+}
+
+#window {
+  padding-right: .4rem;
+  padding-left: .4rem;
+  color: @text;
+}
+
+/* Tooltip */
+tooltip {
+  background-color: @base;
+}
+
+tooltip label {
+  color: @rosewater;
+}
+
+/* battery */
+#battery {
+  color: @mauve;
+}
+
+#battery.full {
+  color: @green;
+}
+
+#battery.charging {
+  color: @teal;
+}
+
+#battery.discharging {
+  color: @peach;
+}
+
+#battery.critical:not(.charging) {
+  color: @pink;
+}
+
+/* mpd */
+#mpd.paused {
+  color: @pink;
+  font-style: italic;
+}
+
+#mpd.stopped {
+  color: @rosewater;
+  /* background: transparent; */
+}
+
+#mpd {
+  color: @lavender;
+}
+
+/* Extra */
+
+#memory {
+  color: @peach;
 }
 
 #cpu {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
+  color: @blue;
 }
 
-#language {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#memory {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#custom-gpu-usage {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#network {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#bluetooth {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#bluetooth.disabled {
-  background: @theme_bg_color;
-  color: @wm_icon_bg;
-}
-
-#network.disconnected {
-  background: @theme_bg_color;
-  color: @wm_icon_bg;
-}
-
-#pulseaudio {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-}
-
-#pulseaudio.muted {
-  background: @theme_bg_color;
-  color: @wm_icon_bg;
-}
-
-#custom-wf-recorder {
-  color: @error_color;
-  padding-right: 10px;
-}
-
-#tray {
-  background: @theme_bg_color;
-  color: @wm_icon_bg;
-  padding-left: 10px;
-  padding-right: 10px;
+#clock {
+  color: @rosewater;
 }
 
 #idle_inhibitor {
-  background: @theme_selected_bg_color;
+  color: @green;
 }
 
-#idle_inhibitor.activated {
-  background: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
+#temperature {
+  color: @sapphire;
+}
+
+#backlight {
+  color: @green;
+}
+
+#pulseaudio {
+  color: @mauve;
+  /* not active */
+}
+
+#network {
+  color: @pink;
+  /* not active */
+}
+
+#network.disconnected {
+  color: @foreground;
+  /* not active */
+}
+
+#disk {
+  color: @maroon;
+}
+
+#custom-wlsunset {
+  color: @yellow;
+}
+
+#custom-media {
+  color: @green;
 }
