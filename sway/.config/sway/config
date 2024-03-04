@@ -234,8 +234,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Laptop swipe to change ws
-bindgesture swipe:right workspace next 
-bindgesture swipe:left workspace prev 
+bindgesture swipe:right workspace prev 
+bindgesture swipe:left workspace next 
 
 # Fn keys
 bindsym XF86MonBrightnessUp exec swayosd-client --brightness=raise
