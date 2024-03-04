@@ -3,8 +3,8 @@
 /* Global */
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: 1rem;
-  border-radius: 0.8rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
   transition-property: background-color;
   transition-duration: 0.5s;
   background-color: shade(@base, 0.9);
@@ -64,9 +64,10 @@ window>box {
   background-color: @green;
 }
 
+
 #workspaces button {
-  padding-right: .4rem;
-  padding-left: .4rem;
+  padding-right: .5rem;
+  padding-left: .5rem;
   padding-top: .1rem;
   padding-bottom: .1rem;
   color: @red;
@@ -84,8 +85,6 @@ window>box {
 }
 
 #window {
-  padding-right: .4rem;
-  padding-left: .4rem;
   color: @text;
 }
 

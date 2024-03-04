@@ -20,18 +20,19 @@ set $term wezterm
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # Recommends: rofi-wayland
-set $rofi_cmd rofi \
-        -terminal '$term'
+set $menu wofi --conf ~/.config/wofi/config/config --style ~/.config/wofi/src/mocha/style.css
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
-set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
+bar {
+    swaybar_command waybar
+}
 # Theme
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Catppuccin-Macchiato-Standard-Blue-Dark'
-    gsettings set $gnome-schema font-name 'Open Sans'
+    gsettings set $gnome-schema font-name 'JetBrainsMono Nerd Font'
 }
 
 # Hide title bar
@@ -42,7 +43,7 @@ default_floating_border pixel 3
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-output * bg ~/Pictures/wallpapers/catcoffee.png fill
+output * bg ~/.config/wallpaper/catppuccin-coffee.png fill
 #
 # Example configuration:
 #
@@ -64,10 +65,12 @@ workspace 8 output eDP-1
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 'dim && swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
-#
+         timeout 270 'dim -d 0' \
+         timeout 300 'hyprlock' \
+         timeout 600 'swaymsg "output * dpms off"' \
+            resume 'swaymsg "output * dpms on"' \
+         before-sleep 'hyprlock'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.

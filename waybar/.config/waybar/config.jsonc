@@ -8,9 +8,11 @@
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        // "sway/mode",
-        // "sway/scratchpad",
         "hyprland/window",
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad",
+        "sway/window",
         "custom/media",
     ],
     "modules-center": [
@@ -36,11 +38,27 @@
         "warp-on-scroll": false,
         "format": "{name}: {icon}",
         "format-icons": {
-            // "1": "",
-            // "2": "",
-            // "3": "",
-            // "4": "",
-            // "5": "",
+            "1": "",
+            "2": "",
+            "3": "",
+            "7": "",
+            "8": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "7": "",
+            "8": "",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -49,6 +67,9 @@
     "hyprland/window": {
         "format": "{class}"
     },
+    "sway/window": {
+        "format": "{app_id}"
+    },
  "disk": {
     "interval": 30,
     "format": " {used}",
@@ -56,16 +77,16 @@
     "tooltip": true,
     "tooltip-format": "{used}/{total} => {path} {percentage_used}%",
   },
-    // "sway/mode": {
-    //     "format": "<span style=\"italic\">{}</span>"
-    // },
-    // "sway/scratchpad": {
-    //     "format": "{icon} {count}",
-    //     "show-empty": false,
-    //     "format-icons": ["", ""],
-    //     "tooltip": true,
-    //     "tooltip-format": "{app}: {title}"
-    // },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
         "format-disconnected": "Disconnected ",
