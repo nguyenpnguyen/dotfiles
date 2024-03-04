@@ -2,6 +2,8 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = {}
 
+config.term = "wezterm"
+
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end

@@ -12,7 +12,7 @@
 export THEME_DIR=$HOME/.themes
 export XDG_CONFIG_DIR=$HOME/.config
 export HYPRSHOT_DIR=$HOME/screenshots
-
+export TERM="wezterm"
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
