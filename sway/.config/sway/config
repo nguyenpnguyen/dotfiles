@@ -24,6 +24,7 @@ set $menu wofi --conf ~/.config/wofi/config/config --style ~/.config/wofi/src/mo
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
+set $file-manager thunar
 
 bar {
     swaybar_command waybar
@@ -32,7 +33,7 @@ bar {
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Catppuccin-Macchiato-Standard-Blue-Dark'
-    gsettings set $gnome-schema font-name 'JetBrainsMono Nerd Font'
+    gsettings set $gnome-schema font-name 'Noto Sans'
 }
 
 # Hide title bar
@@ -79,7 +80,7 @@ exec swayidle -w \
 #
 # Example configuration:
 #
-input "ELAN0676:00 04F3:3195 Touchpad" {
+input "1267:12693:ELAN0676:00_04F3:3195_Touchpad" {
     tap enabled
     natural_scroll enabled 
     middle_emulation enabled
@@ -98,6 +99,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+t exec $file-manager
 
     # Kill focused window
     bindsym $mod+q kill
@@ -234,6 +236,16 @@ bindsym $mod+r mode "resize"
 bindgesture swipe:right workspace next 
 bindgesture swipe:left workspace prev 
 
+# clipboard history
+bindsym $mod+c exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+
+# Screenshot
+# Screenshot a window
+bindsym $mod+Print exec hyprshot -m window
+# Screenshot a monitor
+bindsym Print exec hyprshot -m output
+# Screenshot a region
+bindsym $mod+Shift+Print exec hyprshot -m region
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
 #  - /etc/sway/config.d
