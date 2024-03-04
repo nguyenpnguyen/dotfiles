@@ -4,6 +4,9 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# Exec on startup
+exec fcitx5 & swayosd-server & wl-paste --watch cliphist store 
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -235,6 +238,20 @@ bindsym $mod+r mode "resize"
 # Laptop swipe to change ws
 bindgesture swipe:right workspace next 
 bindgesture swipe:left workspace prev 
+
+# Fn keys
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness=raise
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness=lower
+
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume=+5
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume=-5
+
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # clipboard history
 bindsym $mod+c exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
