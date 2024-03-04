@@ -79,6 +79,10 @@ window>box {
   color: @blue;
 }
 
+#workspaces button.focused {
+  color: @blue;
+}
+
 #workspaces button:hover {
   /* border: .2px solid transparent; */
   color: @rosewater;
