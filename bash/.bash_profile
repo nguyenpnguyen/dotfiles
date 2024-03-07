@@ -3,6 +3,9 @@ export THEME_DIR=$HOME/.themes
 export XDG_CONFIG_DIR=$HOME/.config
 export HYPRSHOT_DIR=$HOME/screenshots
 export TERM="wezterm"
+export XDG_SESSION_TYPE=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -39,6 +42,7 @@ esac
 
 # Go
 PATH=$PATH:/usr/local/go/bin
+PATH=$GOPATH/bin/:$PATH
 export GOPATH=$HOME/go/bin/
 
 # Rust
