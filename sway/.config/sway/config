@@ -246,10 +246,10 @@ bindsym XF86AudioLowerVolume exec swayosd-client --output-volume=-5
 
 bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
 
-bindsym XF86AudioPlay exec playerctl --player=spotify,brave,%any play-pause
-bindsym XF86AudioPause exec playerctl --player=spotify,brave,%any pause
-bindsym XF86AudioNext exec playerctl --player=spotify,brave,%any next
-bindsym XF86AudioPrev exec playerctl --player=spotify,brave,%any previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl  pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Lock screen after closing lid
 set $lock 'swaylock -t -e -c 1e1e2e'
