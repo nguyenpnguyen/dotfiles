@@ -40,6 +40,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
 # Go
 PATH=$PATH:/usr/local/go/bin
 PATH=$GOPATH/bin/:$PATH

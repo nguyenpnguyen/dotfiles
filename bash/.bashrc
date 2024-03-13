@@ -180,3 +180,4 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 source "$OSH"/oh-my-bash.sh
+
