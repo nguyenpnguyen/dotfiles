@@ -1,5 +1,12 @@
 copilot/
 tmux/.config/tmux/plugins/*
+
+# VSC*de
 vscode/*
-!vscode/.config/'Code - OSS'/User/settings.json
-!vscode/.config/'Code - OSS'/User/keybindings.json
+!vscode/.config
+vscode/.config/*
+!vscode/.config/Code\ -\ OSS
+vscode/.config/Code\ -\ OSS/*
+!vscode/.config/Code\ -\ OSS/User
+vscode/.config/Code\ -\ OSS/User/*
+!vscode/.config/Code\ -\ OSS/User/*.json
