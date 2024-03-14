@@ -5,7 +5,7 @@
 # Read `man 5 sway` for a complete reference.
 
 # Exec on startup
-exec fcitx5 & swayosd-server & wl-paste --watch cliphist store 
+exec fcitx5 & swayosd-server & wl-paste --watch cliphist store & nm-applet
 
 ### Variables
 #
@@ -62,6 +62,7 @@ workspace 2 output HDMI-A-1
 workspace 3 output HDMI-A-1
 workspace 4 output HDMI-A-1
 
+workspace 6 output eDP-1
 workspace 7 output eDP-1
 workspace 8 output eDP-1
 ### Idle configuration
@@ -69,9 +70,9 @@ workspace 8 output eDP-1
 # Example configuration:
 #
 exec swayidle -w \
-        timeout 300 'dim && playerctl pause && swaylock -t -e -c 1e1e2e' \
+        timeout 300 'dim && lock' \
         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-        before-sleep 'swaylock -t -e -c 1e1e2e'
+        before-sleep 'lock'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -252,8 +253,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Lock screen after closing lid
-set $lock 'swaylock -t -e -c 1e1e2e'
-bindswitch --reload --locked lid:on exec $lock
+bindswitch --reload --locked lid:on exec lock
 
 # clipboard history
 bindsym $mod+c exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
