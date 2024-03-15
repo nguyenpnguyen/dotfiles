@@ -66,5 +66,14 @@ PERL_MM_OPT="INSTALL_BASE=/home/nguyen/perl5"; export PERL_MM_OPT;
 # Pfetch-rs
 export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 
+# Tex
+MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
+INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
+PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
+
+
 export PATH
+export MANPATH
+export INFOPATH
+
 pfetch
