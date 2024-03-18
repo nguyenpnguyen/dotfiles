@@ -75,5 +75,3 @@ PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
 export PATH
 export MANPATH
 export INFOPATH
-
-pfetch
