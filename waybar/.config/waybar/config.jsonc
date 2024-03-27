@@ -18,6 +18,7 @@
     "modules-center": [
     ],
     "modules-right": [
+        "custom/pomo",
         "custom/wlsunset",
         "idle_inhibitor",
         "pulseaudio",
@@ -206,6 +207,14 @@
     "custom/wlsunset":{
         "format": "󰈋",
         "on-click": "bash ~/.config/waybar/scripts/sunONOFF.sh"
-    }
-    
+    },
+    "custom/pomo": {
+        "format": "   {}",
+        "exec": "pomodoro-cli status --format json --time-format digital",
+        "return-type": "json",
+        "on-click": "pomodoro-cli start --add 5m --silent --notify",
+        "on-click-middle": "pomodoro-cli pause",
+        "on-click-right": "pomodoro-cli stop",
+        "interval": 1
+    },
 }

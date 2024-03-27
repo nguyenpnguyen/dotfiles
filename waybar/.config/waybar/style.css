@@ -43,8 +43,8 @@
 #disk,
 #custom-pacman,
 #custom-scratchpad-indicator {
-  padding-left: .6rem;
-  padding-right: .6rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
 }
 
 /* Bar */
@@ -52,24 +52,22 @@ window#waybar {
   background-color: transparent;
 }
 
-window>box {
+window > box {
   background-color: transparent;
-  margin: .3rem;
+  margin: 0.3rem;
   margin-bottom: 0;
 }
-
 
 /* Workspaces */
 #workspaces:hover {
   background-color: @green;
 }
 
-
 #workspaces button {
-  padding-right: .5rem;
-  padding-left: .5rem;
-  padding-top: .1rem;
-  padding-bottom: .1rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
   color: @red;
   /* border: .2px solid transparent; */
   background: transparent;
@@ -188,4 +186,16 @@ tooltip label {
 
 #custom-media {
   color: @green;
+}
+
+#custom-pomo.running {
+  color: @green;
+}
+
+#custom-pomo.paused {
+  color: @peach;
+}
+
+#custom-pomo.finished {
+  color: @red;
 }
