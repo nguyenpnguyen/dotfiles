@@ -189,7 +189,7 @@ tooltip label {
 }
 
 #custom-pomo.running {
-  color: @green;
+  color: @teal;
 }
 
 #custom-pomo.paused {
