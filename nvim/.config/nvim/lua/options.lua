@@ -52,4 +52,7 @@ vim.o.termguicolors = true
 -- Vimtex
 vim.g.vimtex_view_method = 'zathura'
 
+-- Codeium
+vim.g.codeium_enabled = false
+
 -- vim: ts=2 sts=2 sw=2 et
