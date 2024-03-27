@@ -51,10 +51,37 @@ cmp.setup {
   },
   formatting = {
     format = require('lspkind').cmp_format({
-      mode = "symbol",
       maxwidth = 50,
       ellipsis_char = '...',
-      symbol_map = { Codeium = "", }
+      show_labelDetails = true,
+      symbol_map = {
+        Text = "󰉿",
+        Method = "󰆧",
+        Function = "󰊕",
+        Constructor = "",
+        Field = "󰜢",
+        Variable = "󰀫",
+        Class = "󰠱",
+        Interface = "",
+        Module = "",
+        Property = "󰜢",
+        Unit = "󰑭",
+        Value = "󰎠",
+        Enum = "",
+        Keyword = "󰌋",
+        Snippet = "",
+        Color = "󰏘",
+        File = "󰈙",
+        Reference = "󰈇",
+        Folder = "󰉋",
+        EnumMember = "",
+        Constant = "󰏿",
+        Struct = "󰙅",
+        Event = "",
+        Operator = "󰆕",
+        TypeParameter = "",
+        Codeium = ""
+      }
     })
   }
 }
