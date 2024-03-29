@@ -35,3 +35,6 @@ Plugin 'tpope/vim-surround'
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 set ideajoin
+
+set clipboard=unnamedplus
+set clipboard^=ideaput
