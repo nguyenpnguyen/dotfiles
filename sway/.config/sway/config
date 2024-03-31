@@ -71,7 +71,9 @@ workspace 8 output eDP-1
 #
 exec swayidle -w \
         timeout 300 'dim && lock' \
-        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+        timeout 600 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+        timeout 1200 'systemctl suspend-then-hibernate' \
         before-sleep 'lock'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -180,6 +182,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="code-oss"] workspace number 3
     assign [class="obsidian"] workspace number 4
     assign [instance="crx_cifhbcnohmdccbgoicgdjpfamggdegmo"] workspace number 5
+    assign [class="StarUML"] workspace number 5
     assign [class="thunderbird"] workspace number 6
     assign [instance="crx_jnpecgipniidlgicjocehkhajgdnjekh"] workspace number 6
     assign [class="discord"] workspace number 7
@@ -266,10 +269,11 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Lock screen after closing lid
-bindswitch --reload --locked lid:on exec lock
+set $lidclose 'lock && systemctl suspend-then-hibernate'
+bindswitch --reload --locked lid:on exec $lidclose
 
 # clipboard history
-bindsym $mod+c exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
 # Screenshot
 # Screenshot a window
