@@ -73,6 +73,8 @@ MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
 INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
 
+# Zoxide
+eval "$(zoxide init bash)"
 
 export PATH
 export MANPATH
