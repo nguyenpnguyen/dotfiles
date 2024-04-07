@@ -5,6 +5,7 @@ export HYPRSHOT_DIR=$HOME/screenshots
 export TERM="wezterm"
 export XDG_SESSION_TYPE=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
+export PATH_TO_FX=/opt/javafx-sdk-21.0.2/lib
 
 set -o vi
 
