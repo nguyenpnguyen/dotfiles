@@ -277,11 +277,12 @@ bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-co
 
 # Screenshot
 # Screenshot a window
-bindsym $mod+Print exec hyprshot -m window
+bindsym $mod+Print exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" 
 # Screenshot a monitor
-bindsym Print exec hyprshot -m output
+bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') 
 # Screenshot a region
-bindsym $mod+Shift+Print exec hyprshot -m region
+bindsym $mod+Shift+Print exec grim -g "$(slurp)"
+
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
 #  - /etc/sway/config.d
