@@ -13,14 +13,13 @@
         "sway/mode",
         "sway/scratchpad",
         "sway/window",
-        "custom/media",
     ],
     "modules-center": [
-    ],
-    "modules-right": [
         "custom/pomo",
         "custom/wlsunset",
         "idle_inhibitor",
+    ],
+    "modules-right": [
         "pulseaudio",
         "network",
         "cpu",

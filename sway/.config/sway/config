@@ -47,7 +47,7 @@ default_floating_border pixel 3
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-output * bg ~/.config/wallpaper/catppuccin-coffee.png fill
+output * bg $HOME/.config/wallpaper/catppuccin-coffee.png fill
 #
 # Example configuration:
 #
