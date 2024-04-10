@@ -10,8 +10,9 @@ vim.keymap.set('t', 'jk', [[<C-\><C-n>]])
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
---Toggle neotree
-vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>', { silent = true })
+--Toggle oil
+vim.keymap.set('n', '<leader>o', '<Cmd>Oil<CR>', { silent = true })
+vim.keymap.set('n', '<leader>e', '<Cmd>Oil --float<CR>', { silent = true })
 
 -- Format
 vim.keymap.set('n', '<leader>f', '<Cmd>Format<CR>', { silent = true })
