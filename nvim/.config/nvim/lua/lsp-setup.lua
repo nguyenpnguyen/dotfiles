@@ -66,6 +66,10 @@ require('which-key').register({
 require('mason').setup()
 require('mason-lspconfig').setup()
 
+-- Java setup
+
+require('java').setup()
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -89,7 +93,6 @@ local servers = {
   },
   htmx = { filetypes = { 'html', 'templ' }
   },
-  jdtls = {},
 
   lua_ls = {
     Lua = {
@@ -160,5 +163,21 @@ lspconfig.tailwindcss.setup({
   capabilities = capabilities,
   filetypes = { "templ", "astro", "javascript", "typescript", "react", "svelte" },
   init_options = { userLanguages = { templ = "html" } },
+})
+
+lspconfig.jdtls.setup({
+  settings = {
+    java = {
+      configuration = {
+        runtimes = {
+          {
+            name = "JavaSE-21",
+            path = "/usr/lib/jvm/default/bin/java",
+            default = true,
+          }
+        }
+      }
+    }
+  }
 })
 -- vim: ts=2 sts=2 sw=2 et
