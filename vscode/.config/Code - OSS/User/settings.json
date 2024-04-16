@@ -1,10 +1,10 @@
 {
   "rest-client.enableTelemetry": false,
   "files.autoSave": "onFocusChange",
-  "editor.fontFamily": "JetBrainsMono Nerd Font, monospace",
+  "editor.fontFamily": "IosevkaTerm Nerd Font, monospace",
   "terminal.external.osxExec": "wezterm",
   "terminal.integrated.fontSize": 14,
-  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font, monospace",
+  "terminal.integrated.fontFamily": "IosevkaTerm Nerd Font, monospace",
   "editor.fontLigatures": true,
   "html.format.templating": true,
   "editor.formatOnSave": true,

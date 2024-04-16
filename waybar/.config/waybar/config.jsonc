@@ -15,8 +15,6 @@
         "sway/window",
         "custom/media"
     ],
-    "modules-center": [
-    ],
     "modules-right": [
         "custom/pomo",
         "custom/wlsunset",

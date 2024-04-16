@@ -20,8 +20,8 @@ config.inactive_pane_hsb = {
 	brightness = 0.6,
 }
 -- Font config
-config.font = wezterm.font("JetBrainsMono Nerd Font")
-config.font_size = 14.0
+config.font = wezterm.font("Iosevka Term Nerd Font")
+config.font_size = 15.0
 
 -- Keybindings
 -- timeout_milliseconds defaults to 1000 and can be omitted
