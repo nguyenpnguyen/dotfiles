@@ -1,11 +1,6 @@
 # environment variables:
-export THEME_DIR=$HOME/.themes
 export XDG_CONFIG_DIR=$HOME/.config
-export HYPRSHOT_DIR=$HOME/screenshots
-export TERM="wezterm"
-export XDG_SESSION_TYPE=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
-export PATH_TO_FX=/opt/javafx-sdk-21.0.2/lib
 
 set -o vi
 
@@ -28,7 +23,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Neovim
-PATH="$PATH:/usr/bin"
+export PATH="$PATH:/opt/nvim-linux64/bin"
 export EDITOR=nvim
 
 # Nodejs
@@ -45,7 +40,7 @@ esac
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
+PATH=$BUN_INSTALL/bin:$PATH
 
 # Go
 PATH=$PATH:/usr/local/go/bin
@@ -53,26 +48,32 @@ PATH=$GOPATH/bin/:$PATH
 export GOPATH=$HOME/go/bin/
 
 # Rust
-# . "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 PATH=$PATH:$HOME/.cargo/bin
 
 # Java
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
+export JAVA=/opt/java/jdk/jdk-22.0.1/bin/java
+export JAVA_HOME=/opt/java/jdk/jdk-22.0.1/
+export PATH_TO_FX=/opt/java/javafx/javafx-sdk-22.0.1/lib/
+PATH=$JAVA_HOME/bin:$PATH
+
+# Lua
+export LUAINC=/usr/include/lua5.4/
 
 # Perl
-PATH="/home/nguyen/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/nguyen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/nguyen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/nguyen/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/nguyen/perl5"; export PERL_MM_OPT;
+# PATH="/home/nguyen/perl5/bin${PATH:+:${PATH}}"; export PATH;
+# PERL5LIB="/home/nguyen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+# PERL_LOCAL_LIB_ROOT="/home/nguyen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+# PERL_MB_OPT="--install_base \"/home/nguyen/perl5\""; export PERL_MB_OPT;
+# PERL_MM_OPT="INSTALL_BASE=/home/nguyen/perl5"; export PERL_MM_OPT;
 
 # Pfetch-rs
 export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 
 # Tex
-MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
-INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
-PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
+# MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
+# INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
+# PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
 
 # Zoxide
 eval "$(zoxide init bash)"
