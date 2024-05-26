@@ -57,6 +57,9 @@ export JAVA_HOME=/opt/java/jdk/jdk-22.0.1/
 export PATH_TO_FX=/opt/java/javafx/javafx-sdk-22.0.1/lib/
 PATH=$JAVA_HOME/bin:$PATH
 
+# Maven
+PATH=$PATH:/opt/maven/apache-maven-3.9.6/bin 
+
 # Lua
 export LUAINC=/usr/include/lua5.4/
 

@@ -1,47 +1,136 @@
--- [[ Configure LSP ]]
---  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
+local lsp_ok, lsp = pcall(require, "lspconfig")
+if not lsp_ok then
+  return
+end
 
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+local cmq_ok, _ = pcall(require, "cmp_nvim_lsp")
+if not cmq_ok then
+  return
+end
+
+local opts = { noremap = true, silent = true }
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+---------------
+--- keymaps ---
+---------------
+vim.keymap.set(
+  "n",
+  "d/",
+  vim.diagnostic.setloclist,
+  vim.tbl_extend("force", opts, { desc = "Lsp send diagnostics to loc list" })
+)
+vim.keymap.set(
+  "n",
+  "<leader>df",
+  vim.diagnostic.open_float,
+  vim.tbl_extend("force", opts, { desc = "Lsp show diagnostic in floating window" })
+)
+
+local on_attach = function(client, bufnr)
+  vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+  --- toggle inlay hints
+  vim.g.inlay_hints_visible = false
+  local function toggle_inlay_hints()
+    if vim.g.inlay_hints_visible then
+      vim.g.inlay_hints_visible = false
+      vim.lsp.inlay_hint(bufnr, false)
+    else
+      if client.server_capabilities.inlayHintProvider then
+        vim.g.inlay_hints_visible = true
+        vim.lsp.inlay_hint(bufnr, true)
+      else
+        print("no inlay hints available")
+      end
+    end
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  --- toggle diagnostics
+  vim.g.diagnostics_visible = true
+  local function toggle_diagnostics()
+    if vim.g.diagnostics_visible then
+      vim.g.diagnostics_visible = false
+      vim.diagnostic.enabled(false, {})
+    else
+      vim.g.diagnostics_visible = true
+      vim.diagnostic.enable()
+    end
+  end
 
-  nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  --- autocmd to show diagnostics on CursorHold
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    desc = "✨lsp show diagnostics on CursorHold",
+    callback = function()
+      local hover_opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = "rounded",
+        source = "always",
+        prefix = " ",
+      }
+      vim.diagnostic.open_float(nil, hover_opts)
+    end,
+  })
 
-  -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-  -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  nmap('<leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", bufopts, { desc = "✨lsp hover for docs" }))
+  vim.keymap.set(
+    "n",
+    "gD",
+    vim.lsp.buf.declaration,
+    vim.tbl_extend("force", bufopts, { desc = "✨lsp go to declaration" })
+  )
+  vim.keymap.set(
+    "n",
+    "gd",
+    vim.lsp.buf.definition,
+    vim.tbl_extend("force", bufopts, { desc = "✨lsp go to definition" })
+  )
+  vim.keymap.set(
+    "n",
+    "gt",
+    vim.lsp.buf.type_definition,
+    vim.tbl_extend("force", bufopts, { desc = "✨lsp go to type definition" })
+  )
+  vim.keymap.set(
+    "n",
+    "gi",
+    vim.lsp.buf.implementation,
+    vim.tbl_extend("force", bufopts, { desc = "✨lsp go to implementation" })
+  )
+  vim.keymap.set("n", "rn", function()
+    return ":IncRename " .. vim.fn.expand("<cword>")
+  end, { expr = true })
+  vim.keymap.set(
+    "n",
+    "gr",
+    vim.lsp.buf.references,
+    vim.tbl_extend("force", bufopts, { desc = "✨lsp go to references" })
+  )
+  vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, vim.tbl_extend("force", bufopts, { desc = "✨lsp format" }))
+  vim.keymap.set(
+    "n",
+    "<leader>l",
+    toggle_diagnostics,
+    vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle diagnostics" })
+  )
+  vim.keymap.set(
+    "n",
+    "<leader>dh",
+    toggle_inlay_hints,
+    vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle inlay hints" })
+  )
+  vim.keymap.set(
+    "n",
+    "<leader>a",
+    "<cmd>CodeActionMenu<CR>",
+    vim.tbl_extend("force", bufopts, { desc = "✨lsp code action" })
+  )
 end
+
+vim.lsp.set_log_level("debug")
 
 -- document existing key chains
 require('which-key').register {
@@ -107,10 +196,6 @@ local servers = {
 -- Setup neovim lua configuration
 require('neodev').setup()
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
@@ -132,40 +217,38 @@ mason_lspconfig.setup_handlers {
 -- Language specific LSP setup
 -- May need to investigate a better way to do this
 
-local lspconfig = require('lspconfig')
-
-lspconfig.tsserver.setup({
+lsp.tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "javascript", "typescript", "react", "svelte" },
 })
 
-lspconfig.cssls.setup({
+lsp.cssls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "html", "react", "svelte", "templ", "astro" },
 })
 
-lspconfig.html.setup({
+lsp.html.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "html", "templ", "svelte" },
 })
 
-lspconfig.htmx.setup({
+lsp.htmx.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "html", "templ" },
 })
 
-lspconfig.tailwindcss.setup({
+lsp.tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "templ", "astro", "javascript", "typescript", "react", "svelte" },
   init_options = { userLanguages = { templ = "html" } },
 })
 
-lspconfig.jdtls.setup({
+lsp.jdtls.setup({
   settings = {
     java = {
       configuration = {
