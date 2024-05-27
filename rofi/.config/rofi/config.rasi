@@ -1,7 +1,6 @@
 configuration{
     modi: "run,drun,window";
     icon-theme: "Oranchelo";
-    font: "FiraCode Nerd Font";
     show-icons: true;
     terminal: "wezterm";
     drun-display-format: "{icon} {name}";
@@ -15,5 +14,5 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "catppuccin-frappe"
+@theme "catppuccin-mocha"
 

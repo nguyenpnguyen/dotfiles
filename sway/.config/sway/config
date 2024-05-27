@@ -5,8 +5,10 @@
 # Read `man 5 sway` for a complete reference.
 
 # Exec on startup
-exec fcitx5 & swayosd-server & wl-paste --watch cliphist store & nm-applet
+exec mako & fcitx5 & swayosd-server & wl-paste --watch cliphist store & nm-applet
+exec /usr/libexec/gsd-xsettings
 
+exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -23,15 +25,16 @@ set $term wezterm
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # Recommends: rofi-wayland
-set $menu wofi --conf ~/.config/wofi/config/config --style ~/.config/wofi/src/mocha/style.css
+set $menu "rofi -combi-modi drun,run -show combi -show-icons"
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
-set $file-manager thunar
+set $file-manager nautilus 
 
 bar {
     swaybar_command waybar
 }
+
 # Theme
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
@@ -269,19 +272,19 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Lock screen after closing lid
-set $lidclose 'lock && systemctl suspend-then-hibernate'
-bindswitch --reload --locked lid:on exec $lidclose
+# set $lidclose 'lock && systemctl suspend-then-hibernate'
+# bindswitch --reload --locked lid:on exec $lidclose
 
 # clipboard history
-bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+# bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
 # Screenshot
 # Screenshot a window
-bindsym $mod+Print exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" 
+# bindsym $mod+Print exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" 
 # Screenshot a monitor
-bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') 
+# bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') 
 # Screenshot a region
-bindsym $mod+Shift+Print exec grim -g "$(slurp)"
+# bindsym $mod+Shift+Print exec grim -g "$(slurp)"
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
