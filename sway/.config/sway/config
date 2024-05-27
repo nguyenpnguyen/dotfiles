@@ -76,8 +76,8 @@ workspace 8 output eDP-1
 exec swayidle -w \
         timeout 300 'dim && swaylock' \
         timeout 360 'swaymsg "output * dpms off"' \
+        timeout 600 'systemctl suspend' \
         resume 'swaymsg "output * dpms on"' \
-        timeout 900 'systemctl suspend' \
         before-sleep 'swaylock'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
