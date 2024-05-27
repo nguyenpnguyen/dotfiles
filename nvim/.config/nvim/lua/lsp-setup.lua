@@ -155,10 +155,6 @@ require('which-key').register({
 require('mason').setup()
 require('mason-lspconfig').setup()
 
--- Java setup
-
-require('java').setup()
-
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -254,8 +250,8 @@ lsp.jdtls.setup({
       configuration = {
         runtimes = {
           {
-            name = "JavaSE-21",
-            path = "/usr/lib/jvm/default/bin/java",
+            name = "Java",
+            path = "$JAVA",
             default = true,
           }
         }

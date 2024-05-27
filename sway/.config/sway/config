@@ -5,10 +5,10 @@
 # Read `man 5 sway` for a complete reference.
 
 # Exec on startup
-exec mako & fcitx5 & swayosd-server & wl-paste --watch cliphist store & nm-applet
+exec  fcitx5  & wl-paste --watch cliphist store & nm-applet
 exec /usr/libexec/gsd-xsettings
 
-exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+# exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -20,7 +20,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # Recommends: foot
-set $term wezterm 
+set $term foot 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -29,13 +29,14 @@ set $menu "rofi -combi-modi drun,run -show combi -show-icons"
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
-set $file-manager nautilus 
+set $file-manager thunar 
 
-bar {
-    swaybar_command waybar
-}
 
-# Theme
+# bar {
+#   swaybar_command waybar 
+# }
+
+# Theme 
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Catppuccin-Macchiato-Standard-Blue-Dark'
@@ -179,7 +180,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # We just use 1-10 as the default.
 
     # Assign applications to specific workspaces
-    assign [app_id="firefoxdeveloperedition"] workspace number 1
+    assign [app_id="org.mozilla.firefox"] workspace number 1
     assign [app_id="org.wezfurlong.wezterm"] workspace number 2
     assign [class="jetbrains-idea"] workspace number 3
     assign [class="code-oss"] workspace number 3
@@ -258,18 +259,18 @@ bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next 
 
 # Fn keys
-bindsym XF86MonBrightnessUp exec swayosd-client --brightness=raise
-bindsym XF86MonBrightnessDown exec swayosd-client --brightness=lower
+# bindsym XF86MonBrightnessUp exec swayosd-client --brightness=raise
+# bindsym XF86MonBrightnessDown exec swayosd-client --brightness=lower
 
-bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume=+5
-bindsym XF86AudioLowerVolume exec swayosd-client --output-volume=-5
+# bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume=+5
+# bindsym XF86AudioLowerVolume exec swayosd-client --output-volume=-5
 
-bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+# bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
 
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl  pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioPause exec playerctl  pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
 
 # Lock screen after closing lid
 # set $lidclose 'lock && systemctl suspend-then-hibernate'

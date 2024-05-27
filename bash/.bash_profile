@@ -52,10 +52,11 @@ export GOPATH=$HOME/go/bin/
 PATH=$PATH:$HOME/.cargo/bin
 
 # Java
-export JAVA=/opt/java/jdk/jdk-22.0.1/bin/java
-export JAVA_HOME=/opt/java/jdk/jdk-22.0.1/
-export PATH_TO_FX=/opt/java/javafx/javafx-sdk-22.0.1/lib/
+export JAVA_HOME=/opt/jvm/jdk-22.0.1
+export JAVA=$JAVA_HOME/bin/java
+export PATH_TO_FX=/opt/jvm/javafx-sdk-22.0.1
 PATH=$JAVA_HOME/bin:$PATH
+PATH=$PATH_TO_FX/lib:$PATH
 
 # Maven
 PATH=$PATH:/opt/maven/apache-maven-3.9.6/bin 
