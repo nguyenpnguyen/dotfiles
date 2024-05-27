@@ -25,7 +25,7 @@ set $term foot
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # Recommends: rofi-wayland
-set $menu "rofi -combi-modi drun,run -show combi -show-icons"
+set $menu "rofi -combi-modi drun,run,window -show combi -show-icons"
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
@@ -74,11 +74,11 @@ workspace 8 output eDP-1
 # Example configuration:
 #
 exec swayidle -w \
-        timeout 300 'dim && lock' \
-        timeout 600 'swaymsg "output * dpms off"' \
+        timeout 300 'dim && swaylock' \
+        timeout 360 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
-        timeout 1200 'systemctl suspend-then-hibernate' \
-        before-sleep 'lock'
+        timeout 900 'systemctl suspend' \
+        before-sleep 'swaylock'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -182,13 +182,12 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # Assign applications to specific workspaces
     assign [app_id="org.mozilla.firefox"] workspace number 1
     assign [app_id="org.wezfurlong.wezterm"] workspace number 2
-    assign [class="jetbrains-idea"] workspace number 3
-    assign [class="code-oss"] workspace number 3
-    assign [class="obsidian"] workspace number 4
-    assign [instance="crx_cifhbcnohmdccbgoicgdjpfamggdegmo"] workspace number 5
-    assign [class="StarUML"] workspace number 5
+    assign [app_id="foot"] workspace number 2
+    assign [class="jetbrains-idea"] workspace number 2
+    assign [class="code-oss"] workspace number 2
+    assign [class="obsidian"] workspace number 3
+    assign [class="StarUML"] workspace number 4
     assign [class="thunderbird"] workspace number 6
-    assign [instance="crx_jnpecgipniidlgicjocehkhajgdnjekh"] workspace number 6
     assign [class="discord"] workspace number 7
     assign [class="Spotify"] workspace number 8
     assign [class="steam"] workspace number 9
