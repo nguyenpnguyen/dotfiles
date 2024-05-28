@@ -187,7 +187,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="code-oss"] workspace number 3
     assign [class="obsidian"] workspace number 4
     assign [class="StarUML"] workspace number 4
-    assign [class="thunderbird"] workspace number 6
+    assign [app_id="thunderbird-esr"] workspace number 6
     assign [class="discord"] workspace number 7
     assign [class="Spotify"] workspace number 8
     assign [class="steam"] workspace number 9
