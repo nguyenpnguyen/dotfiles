@@ -181,6 +181,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     # Assign applications to specific workspaces
     assign [app_id="org.mozilla.firefox"] workspace number 1
+    assign [class="Brave-browser"] workspace number 1
     assign [app_id="org.wezfurlong.wezterm"] workspace number 2
     assign [app_id="foot"] workspace number 2
     assign [class="jetbrains-idea"] workspace number 3
