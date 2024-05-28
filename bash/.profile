@@ -28,7 +28,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Neovim
-export PATH="$PATH:/opt/nvim-linux64/bin"
+PATH=$PATH:/opt/nvim-linux64/bin
 export EDITOR=nvim
 
 # Nodejs
@@ -40,7 +40,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export PNPM_HOME="/home/nguyen/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *) PATH="$PNPM_HOME:$PATH" ;;
 esac
 
 # bun
@@ -64,7 +64,7 @@ PATH=$JAVA_HOME/bin:$PATH
 PATH=$PATH_TO_FX/lib:$PATH
 
 # Maven
-PATH=$PATH:/opt/maven/apache-maven-3.9.6/bin 
+export PATH=$PATH:/opt/maven/apache-maven-3.9.6/bin 
 
 # Lua
 export LUAINC=/usr/include/lua5.4/
@@ -85,5 +85,5 @@ export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 # PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
 
 export PATH
-export MANPATH
-export INFOPATH
+# export MANPATH
+# export INFOPATH
