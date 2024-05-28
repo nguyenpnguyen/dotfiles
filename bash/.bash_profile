@@ -49,8 +49,8 @@ PATH=$BUN_INSTALL/bin:$PATH
 
 # Go
 PATH=$PATH:/usr/local/go/bin
-PATH=$GOPATH/bin/:$PATH
-export GOPATH=$HOME/go/bin/
+PATH=$GOPATH/bin:$PATH
+export GOPATH=$HOME/go/bin
 
 # Rust
 . "$HOME/.cargo/env"
@@ -83,9 +83,6 @@ export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 # MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
 # INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 # PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
-
-# Zoxide
-eval "$(zoxide init bash)"
 
 export PATH
 export MANPATH
