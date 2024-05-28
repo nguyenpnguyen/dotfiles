@@ -5,7 +5,7 @@
 # Read `man 5 sway` for a complete reference.
 
 # Exec on startup
-exec  fcitx5  & wl-paste --watch cliphist store & nm-applet
+exec fcitx5 & wl-paste --watch cliphist store & nm-applet
 exec /usr/libexec/gsd-xsettings
 
 # exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
@@ -199,7 +199,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     for_window [app_id="org.wezfurlong.wezterm"] layout tabbed 
     for_window [app_id="foot"] layout tabbed 
 
-    ### # Firefox Specific Rules
+    ### # Browser Specific Rules
 
     for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
     for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
@@ -290,7 +290,7 @@ bindgesture swipe:left workspace next
 # bindswitch --reload --locked lid:on exec $lidclose
 
 # clipboard history
-# bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+bindsym $mod+Shift+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 
 # Screenshot
 # Screenshot a window
