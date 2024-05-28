@@ -1,6 +1,11 @@
 # environment variables:
 export XDG_CONFIG_DIR=$HOME/.config
 export _JAVA_AWT_WM_NONREPARENTING=1
+export MOZ_ENABLE_WAYLAND=1
+
+export TERM='xterm-256color'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 set -o vi
 
