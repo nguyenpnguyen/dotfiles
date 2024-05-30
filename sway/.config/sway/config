@@ -185,11 +185,13 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [instance="crx_eigpmdhekjlgjgcppnanaanbdmnlnagl"] workspace number 6
     assign [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] workspace number 6
     assign [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] workspace number 6
+    assign [instance="crx_jnpecgipniidlgicjocehkhajgdnjekh"] workspace number 6
 
     for_window [instance="crx_faolnafnngnfdaknnbpnkhgohbobgegn"] layout tabbed
     for_window [instance="crx_eigpmdhekjlgjgcppnanaanbdmnlnagl"] layout tabbed
     for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] layout tabbed
     for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] layout tabbed
+    for_window [instance="crx_jnpecgipniidlgicjocehkhajgdnjekh"] layout tabbed
 
     # Assign applications to specific workspaces
     assign [app_id="org.mozilla.firefox"] workspace number 1
