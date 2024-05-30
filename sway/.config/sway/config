@@ -74,8 +74,8 @@ workspace 8 output eDP-1
 # Example configuration:
 #
 exec swayidle -w \
-        timeout 300 'dim' \
-        timeout 330 'swaylock' \
+        timeout 270 'dim' \
+        timeout 300 'swaylock' \
         timeout 360 'swaymsg "output * dpms off"' \
         timeout 600 'systemctl suspend' \
         resume 'swaymsg "output * dpms on"' \
@@ -208,8 +208,6 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # layout rules
     for_window [app_id="thunar"] floating enable
     for_window [class="Bitwarden"] floating enable
-    for_window [app_id="org.wezfurlong.wezterm"] layout tabbed 
-    for_window [app_id="foot"] layout tabbed 
 
     ### # Browser Specific Rules
 
