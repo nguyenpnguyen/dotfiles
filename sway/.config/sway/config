@@ -196,9 +196,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="Brave-browser"] workspace number 1
     assign [app_id="org.wezfurlong.wezterm"] workspace number 2
     assign [app_id="foot"] workspace number 2
-    assign [class="jetbrains-idea"] workspace number 3
-    assign [class="code-oss"] workspace number 3
-    assign [class="obsidian"] workspace number 4
+    assign [class="jetbrains-idea"] workspace number 2
+    assign [class="code-oss"] workspace number 2
+    assign [class="obsidian"] workspace number 3
     assign [class="StarUML"] workspace number 4
     assign [app_id="thunderbird-esr"] workspace number 6
     assign [class="discord"] workspace number 7
