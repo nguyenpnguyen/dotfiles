@@ -44,8 +44,10 @@ set $file-manager thunar
 # }
 
 # Hide title bar
-default_border pixel 3
-default_floating_border pixel 3
+default_border pixel 4
+default_floating_border pixel 4
+# Hide borders if there is only one child in a workspace or container
+hide_edge_borders --i3 smart_no_gaps
 
 ### Output configuration
 #
@@ -245,7 +247,10 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
-#
+    
+    # Move focus to the child container
+    bindsym $mod+z focus child 
+
 # Scratchpad:
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
