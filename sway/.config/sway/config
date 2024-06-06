@@ -44,10 +44,13 @@ set $file-manager thunar
 # }
 
 # Hide title bar
-default_border pixel 4
-default_floating_border pixel 4
+default_border pixel 3
+default_floating_border pixel 3
 # Hide borders if there is only one child in a workspace or container
-hide_edge_borders --i3 smart_no_gaps
+hide_edge_borders --i3 smart
+
+# Gaps
+gaps inner 4 
 
 ### Output configuration
 #
