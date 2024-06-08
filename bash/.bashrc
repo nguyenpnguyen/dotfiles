@@ -179,7 +179,4 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# Zoxide
-eval "$(zoxide init bash)"
-
 source "$OSH"/oh-my-bash.sh

@@ -57,10 +57,10 @@ export GOPATH=$HOME/go/bin
 PATH=$PATH:$HOME/.cargo/bin
 
 # Java
-export JAVA_HOME=/opt/jvm/jdk-22.0.1
-export JAVA=$JAVA_HOME/bin/java
+export JAVA_HOME=$HOME/.sdkman/candidates/java/current
+export JAVA=$JAVA_HOME/bin
 export PATH_TO_FX=/opt/jvm/javafx-sdk-22.0.1
-PATH=$JAVA_HOME/bin:$PATH
+# PATH=$JAVA_HOME/bin:$PATH
 PATH=$PATH_TO_FX/lib:$PATH
 
 # Maven
@@ -84,6 +84,17 @@ export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 # INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 # PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
 
+# Tmux-sessionizer
+PATH="$PATH":"$HOME/.local/scripts/"
+bindkey -s ^f "tmux-sessionizer\n"
+
 export PATH
 # export MANPATH
 # export INFOPATH
+
+# Zoxide
+eval "$(zoxide init bash)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
