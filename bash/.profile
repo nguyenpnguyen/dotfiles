@@ -86,7 +86,7 @@ export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 
 # Tmux-sessionizer
 PATH="$PATH":"$HOME/.local/scripts/"
-bindkey -s ^f "tmux-sessionizer\n"
+bind -x '"\C-f": tmux-sessionizer'
 
 export PATH
 # export MANPATH
