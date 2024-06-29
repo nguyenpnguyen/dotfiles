@@ -77,14 +77,24 @@ workspace 8 output eDP-1
 ### Idle configuration
 #
 # Example configuration:
-#
-exec swayidle -w \
-        timeout 270 'dim' \
-        timeout 300 'swaylock' \
-        timeout 360 'swaymsg "output * dpms off"' \
-        timeout 600 'systemctl suspend' \
-        resume 'swaymsg "output * dpms on"' \
-        before-sleep 'swaylock'
+
+exec DT="$dim_timeout" LT="$lock_timeout" ST="$screen_timeout" DT=${DT:-270} LT=${LT:-300} ST=${ST:-60} && \
+    swayidle -w \
+        timeout $DT 'dim' \
+        timeout $LT 'swaylock' \
+        timeout $((LT + ST)) 'swaymsg "output * power off"' \
+                      resume 'swaymsg "output * power on"'  \
+        timeout $ST 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power off"' \
+             resume 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power on"'  \
+        timeout $((LT * 2)) 'systemctl suspend' \
+        before-sleep 'swaylock' \
+        lock 'swaylock' \
+        unlock 'pkill -xu "$USER" -SIGUSR1 swaylock'
+
+# Disable displays on idle
+exec command -v swayidle >/dev/null && swayidle -w \
+       timeout 300 'swaymsg "output * power off"' \
+            resume 'swaymsg "output * power on"'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -132,7 +142,11 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym Mod4+shift+e exec swaynag \
+        -t warning \
+        -m 'What do you want to do?' \
+        -b 'Poweroff' 'systemctl poweroff' \
+        -b 'Reboot' 'systemctl reboot'
 #
 # Moving around:
 #
@@ -224,8 +238,20 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     for_window [app_id="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
     for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable 
 
-    for_window [class="Brave-browser" title="Picture-in-Picture"] floating enable
 
+# apply mark for Xwayland and wayland native browser windows
+    for_window [class="Chromium-browser"] mark Browser
+    for_window [class="Brave-browser"] mark Browser
+    for_window [class="firefox"]  mark Browser
+    for_window [app_id="Chromium-browser"] mark Browser
+    for_window [app_id="brave-browser"] mark Browser
+    for_window [app_id="firefox"] mark Browser
+
+# inhibit scrensaver for fullscreen browser windows
+    for_window [con_mark="Browser"] { inhibit_idle fullscreen }
+
+# firefox wayland screensharing indicator
+    for_window [app_id="firefox" title="Firefox — Sharing Indicator"] { floating enable }
 #
 # Layout stuff:
 #
@@ -295,34 +321,59 @@ bindsym $mod+r mode "resize"
 bindgesture swipe:right workspace prev 
 bindgesture swipe:left workspace next 
 
-# Fn keys
-# bindsym XF86MonBrightnessUp exec swayosd-client --brightness=raise
-# bindsym XF86MonBrightnessDown exec swayosd-client --brightness=lower
+set $volume_helper_cmd ~/.local/scripts/volume-helper
+# Allow volume controls even if the screen is locked
+bindsym --locked {
+    XF86AudioRaiseVolume exec \
+        $volume_helper_cmd --limit "$volume_limit" --increase "$volume_step"
+    XF86AudioLowerVolume exec \
+        $volume_helper_cmd --limit "$volume_limit" --decrease "$volume_step"
+    XF86AudioMute    exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $volume_helper_cmd
+    XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+}
 
-# bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume=+5
-# bindsym XF86AudioLowerVolume exec swayosd-client --output-volume=-5
+# Allow Play and Stop bindings even if the screen is locked
+bindsym --locked {
+    XF86AudioPlay       exec playerctl play-pause
+    XF86AudioStop       exec playerctl stop
+}
 
-# bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+bindsym {
+    XF86AudioForward    exec playerctl position +5
+    XF86AudioNext       exec playerctl next
+    XF86AudioPause      exec playerctl pause
+    XF86AudioPrev       exec playerctl previous
+    XF86AudioRewind     exec playerctl position -5
+}
 
-# bindsym XF86AudioPlay exec playerctl play-pause
-# bindsym XF86AudioPause exec playerctl  pause
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
+# Display PulseAudio volume control application (both GTK and Qt varieties)
+# as a floating window.
+
+for_window [app_id="pavucontrol"] {
+    floating enable
+    move position center
+}
+
+for_window [app_id="pavucontrol-qt"] {
+    floating enable
+    move position center
+}
 
 # Lock screen after closing lid
 # set $lidclose 'lock && systemctl suspend-then-hibernate'
 # bindswitch --reload --locked lid:on exec $lidclose
 
+bindsym {
+    # Capture the currently active output
+    Print       exec grimshot --notify save output
+    # Capture the currently active window
+    Alt+Print   exec grimshot --notify save active
+    # Select and capture a custom rectangular area
+    Ctrl+Print  exec grimshot --notify save area
+}
+
 # clipboard history
 bindsym $mod+Shift+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
-
-# Screenshot
-# Screenshot a window
-# bindsym $mod+Print exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" 
-# Screenshot a monitor
-# bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') 
-# Screenshot a region
-# bindsym $mod+Shift+Print exec grim -g "$(slurp)"
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
