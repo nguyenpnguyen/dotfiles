@@ -68,6 +68,8 @@ export PATH=$PATH:/opt/maven/apache-maven-3.9.6/bin
 
 # Lua
 export LUAINC=/usr/include/lua5.4/
+PATH=$PATH:/usr/local/luarocks/bin
+PATH=$PATH:$HOME/.luarocks/bin
 
 # Perl
 # PATH="/home/nguyen/perl5/bin${PATH:+:${PATH}}"; export PATH;
@@ -87,6 +89,11 @@ export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 # Tmux-sessionizer
 PATH="$PATH":"$HOME/.local/scripts/"
 bind -x '"\C-f": tmux-sessionizer'
+
+# Exercism
+if [ -f ~/.config/exercism/exercism_completion.bash ]; then
+   source ~/.config/exercism/exercism_completion.bash
+fi
 
 export PATH
 # export MANPATH
