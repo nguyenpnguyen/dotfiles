@@ -51,9 +51,9 @@
 }
 
 /* Bar*/
-window#waybar {
-  background-color: transparent;
-}
+/*window#waybar {*/
+/*  background-color: transparent;*/
+/*}*/
 
 window>box {
   background-color: transparent;

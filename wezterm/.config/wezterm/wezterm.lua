@@ -20,7 +20,7 @@ config.inactive_pane_hsb = {
 	brightness = 0.6,
 }
 -- Font config
-config.font = wezterm.font("Iosevka Term Nerd Font")
+config.font = wezterm.font("Iosevka Nerd Font")
 config.font_size = 15.0
 
 -- Keybindings

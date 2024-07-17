@@ -1,12 +1,5 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 # Exec on startup
-exec fcitx5 & wl-paste --watch cliphist store & nm-applet
-exec /usr/libexec/gsd-xsettings
+exec fcitx5 & wl-paste --watch cliphist store & swaync & nm-applet & floorp & wezterm & GDK_BACKEND=x11 spotify-tray
 
 # exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 ### Variables
@@ -20,21 +13,15 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # Recommends: foot
-set $term foot 
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# Recommends: rofi-wayland
+set $term wezterm
+
 set $menu "rofi -combi-modi drun,run,window -show combi -show-icons"
-# Shows a combined list of the applications with desktop files and
-# executables from PATH.
-# TODO: add window with the next release of rofi-wayland
+
 set $file-manager thunar 
 
-
-# bar {
-#   swaybar_command waybar 
-# }
+bar {
+  swaybar_command waybar 
+}
 
 # Theme 
 # set $gnome-schema org.gnome.desktop.interface
@@ -53,10 +40,8 @@ hide_edge_borders --i3 smart
 gaps inner 4 
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# Requires: desktop-backgrounds-compat, swaybg
-output * bg $HOME/.config/wallpaper/catppuccin-coffee.png fill
+
+output * bg ~/Pictures/wallpapers/catppuccin-coffee.png fill
 #
 # Example configuration:
 #
@@ -78,32 +63,21 @@ workspace 8 output eDP-1
 #
 # Example configuration:
 
-exec DT="$dim_timeout" LT="$lock_timeout" ST="$screen_timeout" DT=${DT:-270} LT=${LT:-300} ST=${ST:-60} && \
-    swayidle -w \
-        timeout $DT 'dim' \
-        timeout $LT 'swaylock' \
-        timeout $((LT + ST)) 'swaymsg "output * power off"' \
-                      resume 'swaymsg "output * power on"'  \
-        timeout $ST 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power off"' \
-             resume 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power on"'  \
-        timeout $((LT * 2)) 'systemctl suspend' \
-        before-sleep 'swaylock' \
-        lock 'swaylock' \
-        unlock 'pkill -xu "$USER" -SIGUSR1 swaylock'
+exec swayidle -w \
+        timeout 240 'light -O && light -S 5' \
+            resume 'light -I' \
+        timeout 270 'swaylock -f' \
+        timeout 300 'swaymsg "output * power off"' \
+            resume 'swaymsg "output * power on"'  \
+        timeout 360 'systemctl suspend' \
+        before-sleep 'swaylock -f' \
 
 # Disable displays on idle
-exec command -v swayidle >/dev/null && swayidle -w \
-       timeout 300 'swaymsg "output * power off"' \
-            resume 'swaymsg "output * power on"'
-
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# exec command -v swayidle >/dev/null && swayidle -w \
+#        timeout 300 'swaymsg "output * power off"' \
+#             resume 'swaymsg "output * power on"'
 
 ### Input configuration
-#
-# Example configuration:
-#
 input "1267:12693:ELAN0676:00_04F3:3195_Touchpad" {
     tap enabled
     natural_scroll enabled 
@@ -114,16 +88,12 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout us
 }
 #
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
 ### Key bindings
-#
-# Basics:
-#
     # Start a terminal
     bindsym $mod+Return exec $term
     bindsym $mod+t exec $file-manager
+    # Toggle control center
+    bindsym $mod+Shift+n exec swaync-client -t -sw
 
     # Kill focused window
     bindsym $mod+q kill
@@ -199,30 +169,18 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 
-    ### Mail and calendar
-    assign [instance="crx_faolnafnngnfdaknnbpnkhgohbobgegn"] workspace number 6
-    assign [instance="crx_eigpmdhekjlgjgcppnanaanbdmnlnagl"] workspace number 6
-    assign [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] workspace number 6
-    assign [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] workspace number 6
-    assign [instance="crx_jnpecgipniidlgicjocehkhajgdnjekh"] workspace number 6
-
-    for_window [instance="crx_faolnafnngnfdaknnbpnkhgohbobgegn"] layout tabbed
-    for_window [instance="crx_eigpmdhekjlgjgcppnanaanbdmnlnagl"] layout tabbed
-    for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] layout tabbed
-    for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] layout tabbed
-    for_window [instance="crx_jnpecgipniidlgicjocehkhajgdnjekh"] layout tabbed
-
     # Assign applications to specific workspaces
     assign [app_id="org.mozilla.firefox"] workspace number 1
-    assign [app_id="floorp"] workspace number 1
+    assign [class="floorp"] workspace number 1
     assign [class="Brave-browser"] workspace number 1
     assign [app_id="org.wezfurlong.wezterm"] workspace number 2
     assign [app_id="foot"] workspace number 2
     assign [class="jetbrains-idea"] workspace number 2
-    assign [class="code-oss"] workspace number 2
+    assign [class="code"] workspace number 2
     assign [class="obsidian"] workspace number 3
     assign [class="StarUML"] workspace number 4
-    assign [app_id="thunderbird-esr"] workspace number 6
+    assign [class="teams-for-linux"] workspace number 4
+    assign [app_id="thunderbird"] workspace number 6
     assign [class="discord"] workspace number 7
     assign [class="Spotify"] workspace number 8
     assign [class="steam"] workspace number 9
@@ -231,33 +189,23 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     for_window [app_id="thunar"] floating enable
     for_window [class="Bitwarden"] floating enable
 
-    ### # Browser Specific Rules
-
-    for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
-    for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
-    for_window [app_id="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
-    for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable 
-
 
 # apply mark for Xwayland and wayland native browser windows
     for_window [class="Chromium-browser"] mark Browser
+    for_window [class="floorp"] mark Browser
     for_window [class="Brave-browser"] mark Browser
     for_window [class="firefox"]  mark Browser
     for_window [app_id="Chromium-browser"] mark Browser
     for_window [app_id="brave-browser"] mark Browser
+    for_window [app_id="floorp"] mark Browser
     for_window [app_id="firefox"] mark Browser
 
 # inhibit scrensaver for fullscreen browser windows
     for_window [con_mark="Browser"] { inhibit_idle fullscreen }
 
-# firefox wayland screensharing indicator
-    for_window [app_id="firefox" title="Firefox — Sharing Indicator"] { floating enable }
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
     bindsym $mod+b splith
     bindsym $mod+v splitv
 
@@ -283,9 +231,6 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
 
@@ -296,10 +241,6 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 # Resizing containers:
 #
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
@@ -321,32 +262,17 @@ bindsym $mod+r mode "resize"
 bindgesture swipe:right workspace prev 
 bindgesture swipe:left workspace next 
 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-# Requires:     brightnessctl >= 0.5.1-11
-# Recommends:   libnotify
+# Brightness raise with custom value('+' sign needed)
+bindsym XF86MonBrightnessUp  exec light -A 5
+# Brightness lower with custom value('-' sign needed)
+bindsym XF86MonBrightnessDown exec light -U 5
 
-set $brightness_notification_cmd  command -v notify-send >/dev/null && \
-        VALUE=$(brightnessctl --percentage get) && \
-        notify-send -e -h string:x-canonical-private-synchronous:brightness \
-            -h "int:value:$VALUE" -t 800 "Brightness: ${VALUE}%"
-
-bindsym XF86MonBrightnessDown exec \
-        'STEP="$brightness_step" && brightnessctl -q set ${STEP:-5}%- && $brightness_notification_cmd'
-bindsym XF86MonBrightnessUp exec \
-        'STEP="$brightness_step" && brightnessctl -q set +${STEP:-5}% && $brightness_notification_cmd'
-
-set $volume_helper_cmd ~/.local/scripts/volume-helper
-# Allow volume controls even if the screen is locked
-bindsym --locked {
-    XF86AudioRaiseVolume exec \
-        $volume_helper_cmd --limit "$volume_limit" --increase "$volume_step"
-    XF86AudioLowerVolume exec \
-        $volume_helper_cmd --limit "$volume_limit" --decrease "$volume_step"
-    XF86AudioMute    exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $volume_helper_cmd
-    XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-}
-
-# Allow Play and Stop bindings even if the screen is locked
+# Media control
 bindsym --locked {
     XF86AudioPlay       exec playerctl play-pause
     XF86AudioStop       exec playerctl stop
@@ -373,9 +299,13 @@ for_window [app_id="pavucontrol-qt"] {
     move position center
 }
 
+for_window [shell="xwayland"] title_format "[XWayland] %title"
+
+for_window [class="^.*"] focus
+
 # Lock screen after closing lid
-# set $lidclose 'lock && systemctl suspend-then-hibernate'
-# bindswitch --reload --locked lid:on exec $lidclose
+# bindswitch --reload --locked lid:on output eDP-1 disable
+# bindswitch --reload --locked lid:off output eDP-1 enable
 
 bindsym {
     # Capture the currently active output
@@ -389,25 +319,4 @@ bindsym {
 # clipboard history
 bindsym $mod+Shift+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 
-# Include configs from 3 locations:
-#  - /usr/share/sway/config.d
-#  - /etc/sway/config.d
-#  - $XDG_CONFIG_HOME/sway/config.d ($HOME/.config/sway/config.d)
-#
-# If multiple directories contain the files with the same name, the later
-# directory takes precedence; `$XDG_CONFIG_HOME/sway/config.d/20-swayidle.conf`
-# will always be loaded instead of `/usr/share/sway/config.d/20-swayidle.conf`
-# or `/etc/sway/config.d/20-swayidle.conf`
-#
-# This mechanism permits overriding our default configuration per-system
-# (/etc) or per-user ($XDG_CONFIG_HOME) basis. Just create the file you
-# want to modify/override in the higher-level directory.
-#
-# For example, to disable the default bar from Fedora configs, you'll need to
-#     $ echo -n > "$HOME/.config/sway/config.d/90-bar.conf"
-#
-# Note the quoting, the $() and the arguments quoting. All the parts are equally
-# important to make the magic work. And if you want to learn the secret behind
-# the trick, it's all in the `wordexp(3)`.
-#
-include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+include /etc/sway/config.d/*
