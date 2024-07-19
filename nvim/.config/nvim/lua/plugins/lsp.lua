@@ -183,7 +183,7 @@ return {
 			"goimports",
 			"golangci-lint",
 			-- C(++)
-			"clang-format",
+			-- "clang-format",
 			-- Web
 			"rustywind",
 			"prettierd",
