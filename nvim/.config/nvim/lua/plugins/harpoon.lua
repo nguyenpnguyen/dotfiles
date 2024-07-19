@@ -3,71 +3,38 @@ return {
 	branch = "harpoon2",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
-		require("harpoon"):setup()
+		local map = vim.keymap.set
+		local harpoon = require("harpoon")
+		harpoon:setup()
+
+		-- Harpoon keymaps
+		map("n", "<leader>a", function()
+			harpoon:list():add()
+		end, { desc = "Add current file to harpoon" })
+
+		map("n", "<C-e>", function()
+			harpoon.ui:toggle_quick_menu(harpoon:list())
+		end)
+
+		map("n", "<C-h>", function()
+			harpoon:list():select(1)
+		end)
+		map("n", "<C-j>", function()
+			harpoon:list():select(2)
+		end)
+		map("n", "<C-k>", function()
+			harpoon:list():select(3)
+		end)
+		map("n", "<C-l>", function()
+			harpoon:list():select(4)
+		end)
+
+		-- Toggle previous & next buffers stored within Harpoon list
+		map("n", "<leader>[", function()
+			harpoon:list():prev()
+		end, { desc = "Go to previous buffer in harpoon list" })
+		map("n", "<leader>]", function()
+			harpoon:list():next()
+		end, { desc = "Go to next buffer in harpoon list" })
 	end,
-	keys = {
-		{
-			"<leader>hx",
-			function()
-				require("harpoon"):list():add()
-			end,
-			desc = "Add file to harpoon",
-		},
-		{
-			"<leader>hm",
-			function()
-				require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-			end,
-			desc = "Open harpoon menu",
-		},
-		{
-			"<leader>1",
-			function()
-				require("harpoon"):list():select(1)
-			end,
-			desc = "Go to harpoon file 1",
-		},
-		{
-			"<leader>2",
-			function()
-				require("harpoon"):list():select(2)
-			end,
-			desc = "Go to harpoon file 2",
-		},
-		{
-			"<leader>3",
-			function()
-				require("harpoon"):list():select(3)
-			end,
-			desc = "Go to harpoon file 3",
-		},
-		{
-			"<leader>4",
-			function()
-				require("harpoon"):list():select(4)
-			end,
-			desc = "Go to harpoon file 4",
-		},
-		{
-			"<leader>5",
-			function()
-				require("harpoon"):list():select(5)
-			end,
-			desc = "Go to harpoon file 5",
-		},
-		{
-			"<leader>6",
-			function()
-				require("harpoon"):list():prev()
-			end,
-			desc = "Go to previous harpoon file",
-		},
-		{
-			"<leader>7",
-			function()
-				require("harpoon"):list():next()
-			end,
-			desc = "Go to next harpoon file",
-		},
-	},
 }
