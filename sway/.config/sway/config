@@ -1,7 +1,7 @@
 # Exec on startup
-exec fcitx5 & wl-paste --watch cliphist store & swaync & nm-applet & floorp & wezterm & GDK_BACKEND=x11 spotify-tray & /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec fcitx5 & wl-paste --watch cliphist store & swaync & nm-applet & firefox & wezterm & /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-# exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
