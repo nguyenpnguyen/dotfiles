@@ -181,13 +181,14 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="StarUML"] workspace number 4
     assign [class="teams-for-linux"] workspace number 4
     assign [app_id="thunderbird"] workspace number 6
+    assign [class="thunderbird"] workspace number 6
     assign [class="discord"] workspace number 7
     assign [class="Spotify"] workspace number 8
     assign [class="steam"] workspace number 9
 
     # layout rules
     for_window [app_id="thunar"] floating enable
-    for_window [class="Bitwarden"] floating enable
+    # for_window [class="Bitwarden"] floating enable
 
 
 # apply mark for Xwayland and wayland native browser windows
