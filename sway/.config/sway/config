@@ -170,7 +170,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # We just use 1-10 as the default.
 
     # Assign applications to specific workspaces
-    assign [app_id="org.mozilla.firefox"] workspace number 1
+    assign [app_id="firefox"] workspace number 1
     assign [class="floorp"] workspace number 1
     assign [class="Brave-browser"] workspace number 1
     assign [app_id="org.wezfurlong.wezterm"] workspace number 2
@@ -179,7 +179,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="code"] workspace number 2
     assign [class="obsidian"] workspace number 3
     assign [class="StarUML"] workspace number 4
-    assign [class="teams-for-linux"] workspace number 4
+    assign [app_id="teams-for-linux"] workspace number 4
     assign [app_id="thunderbird"] workspace number 6
     assign [class="thunderbird"] workspace number 6
     assign [class="discord"] workspace number 7
