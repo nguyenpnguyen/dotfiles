@@ -1,5 +1,5 @@
 # Exec on startup
-exec fcitx5 & wl-paste --watch cliphist store & swaync & nm-applet & firefox & wezterm & /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec fcitx5 & wl-paste --watch cliphist store & swaync & nm-applet & zen-browser-optimized & wezterm & /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 ### Variables

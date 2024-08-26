@@ -133,14 +133,14 @@ return {
 			pyright = {},
 			-- Web
 			tsserver = {},
-			eslint = {
+			--[[ eslint = {
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						buffer = bufnr,
 						command = "EslintFixAll",
 					})
 				end,
-			},
+			}, ]]
 			cssls = { capabilities = capabilities },
 			html = { capabilities = capabilities },
 			jsonls = { capabilities = capabilities },
@@ -187,7 +187,7 @@ return {
 			-- Web
 			"rustywind",
 			"prettierd",
-			"eslint_d",
+			-- "eslint_d",
 			"stylelint",
 			"htmlbeautifier",
 			-- Java
