@@ -127,12 +127,10 @@ return {
 			clangd = {},
 			-- Go
 			gopls = {},
-			-- Java
-			jdtls = {},
 			-- Python
 			pyright = {},
 			-- Web
-			tsserver = {},
+			ts_ls = {},
 			--[[ eslint = {
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
@@ -176,9 +174,8 @@ return {
 			-- Lua
 			"stylua",
 			-- Python
-			"isort",
-			"black",
-			"flake8",
+			--[[ "black",
+			"flake8", ]]
 			-- Go
 			"goimports",
 			"golangci-lint",

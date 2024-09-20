@@ -27,8 +27,6 @@ return {
 			c = { "clangd" },
 			cpp = { "clangd" },
 			lua = { "stylua" },
-			python = { "isort", "black" },
-			java = { "google-java-format" },
 			javascript = { { "prettierd", "prettier" } },
 			typescript = { { "prettierd", "prettier" } },
 			jsx = { { "prettierd", "prettier" }, "rustywind" },
