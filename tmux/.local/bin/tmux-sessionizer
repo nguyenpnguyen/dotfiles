@@ -3,9 +3,15 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(
-        (find ~/work ~/personal -mindepth 1 -maxdepth 1 -type d -not -path '*/.git*'; \
-        find ~/school -mindepth 3 -maxdepth 3 -type d -not -path '*/.git*') | fzf -m
+selected=$(
+    (find ~/work ~/personal -mindepth 1 -maxdepth 1 -type d \
+      -not -path '*/.git*' \
+      -not -path '*/.vscode*' \
+      -not -path '*/node_modules*'; \
+    find ~/school -mindepth 2 -maxdepth 3 -type d \
+      -not -path '*/.git*' \
+      -not -path '*/.vscode*' \
+      -not -path '*/node_modules*') | fzf -m
     )
 fi
 
