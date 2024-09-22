@@ -13,7 +13,9 @@ if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
 	. "$HOME/.bashrc"
     fi
-    bind -x '"\C-f": tmux-sessionizer'
+    if [ -t 1 ]; then
+	bind -x '"\C-f": tmux-sessionizer'
+    fi
 fi
 
 # if running zsh 
