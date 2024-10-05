@@ -23,8 +23,8 @@
         "disk",
         "temperature",
         "battery",
-        "clock",
         "tray",
+        "clock",
         "custom/notification"
     ],
     "hyprland/workspaces": {
