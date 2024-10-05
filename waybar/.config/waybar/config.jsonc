@@ -78,7 +78,10 @@
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": ["", ""],
+        "format-icons": [
+            "",
+            ""
+        ],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
@@ -117,7 +120,7 @@
     },
     "tray": {
         "icon-size": 15,
-        "spacing": 5 
+        "spacing": 5
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -132,25 +135,45 @@
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["","", ""]
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
     },
     "backlight": {
         "device": "intel_backlight",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
-  "battery": {
-    "interval": 5,
-    "states": {
-      "warning": 20,
-      "critical": 10
+    "battery": {
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "tooltip": true
     },
-    "format": "{icon} {capacity}%",
-    "format-icons": ["", "", "", "", ""],
-    "format-full": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "tooltip": true
-  },
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
@@ -174,30 +197,34 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
-  "custom/notification": {
-    "tooltip": false,
-    "format": "{} {icon}",
-    "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": ""
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
-  },
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
@@ -205,15 +232,15 @@
         "format-icons": {
             "spotify": "",
             "default": "🎜"
-        }, 
+        },
         "on-click": "playerctl --player=spotify play-pause",
         "on-click-right": "playerctl --player=spotify next",
         "on-click-middle": "playerctl --player=spotify previous",
         "escape": true,
-        "exec": "python3 $HOME/bin/mediaplayer.py --player spotify 2> /dev/null"
+        "exec": "python3 $HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null"
     },
-    "custom/wlsunset":{
+    "custom/wlsunset": {
         "format": "󰈋",
-        "on-click": "bash $HOME/bin/sunONOFF.sh"
+        "on-click": "bash $HOME/.config/waybar/scripts/sunONOFF.sh"
     }
 }

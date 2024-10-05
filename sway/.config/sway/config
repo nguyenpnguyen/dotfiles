@@ -1,5 +1,5 @@
 # Exec on startup
-exec fcitx5 & wl-paste --watch cliphist store & swaync & nm-applet & zen-browser-optimized & wezterm & /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec fcitx5 & wl-paste --watch cliphist store & swaync & nm-applet & firefox & wezterm & /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 ### Variables
@@ -17,7 +17,7 @@ set $term wezterm
 
 set $menu "rofi -combi-modi drun,run,window -show combi -show-icons"
 
-set $file-manager thunar 
+set $file-manager nautilus
 
 bar {
   swaybar_command waybar 
@@ -64,8 +64,8 @@ workspace 8 output eDP-1
 # Example configuration:
 
 exec swayidle -w \
-        timeout 240 'light -O && light -S 5' \
-            resume 'light -I' \
+        timeout 240 'swaydim' \
+            resume 'swaydim' \
         timeout 270 'swaylock -f' \
         timeout 300 'swaymsg "output * power off"' \
             resume 'swaymsg "output * power on"'  \
@@ -188,8 +188,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="steam"] workspace number 9
 
     # layout rules
-    for_window [app_id="thunar"] floating enable
-    # for_window [class="Bitwarden"] floating enable
+    for_window [app_id="Nautilus"] floating enable
+    for_window [class="Bitwarden"] floating enable
 
 
 # apply mark for Xwayland and wayland native browser windows
@@ -270,9 +270,9 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Brightness raise with custom value('+' sign needed)
-bindsym XF86MonBrightnessUp  exec light -A 5
+bindsym XF86MonBrightnessUp  exec brightnessctl set 5%+
 # Brightness lower with custom value('-' sign needed)
-bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 # Media control
 bindsym --locked {
