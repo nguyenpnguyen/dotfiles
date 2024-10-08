@@ -2,6 +2,13 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = {}
 
+-- Hyprland fix
+if os.getenv("XDG_CURRENT_DESKTOP") == "Hyprland" then
+	config.enable_wayland = false
+else
+	config.enable_wayland = true
+end
+
 config.term = "wezterm"
 
 if wezterm.config_builder then
@@ -88,14 +95,14 @@ config.keys = {
 	{
 		key = "t",
 		mods = "CTRL",
-		action = act.SpawnTab 'CurrentPaneDomain',
+		action = act.SpawnTab("CurrentPaneDomain"),
 	},
 	{
 		key = "t",
 		mods = "CTRL|SHIFT",
-		action = act.SpawnTab {
-			DomainName = 'unix',
-		},
+		action = act.SpawnTab({
+			DomainName = "unix",
+		}),
 	},
 	-- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
 	-- {
@@ -109,13 +116,13 @@ config.keys = {
 for i = 1, 9 do
 	table.insert(config.keys, {
 		key = tostring(i),
-		mods = 'CTRL',
+		mods = "CTRL",
 		action = act.ActivateTab(i - 1),
 	})
 
 	table.insert(config.keys, {
-		key = 'F' .. tostring(i),
-		mods = 'CTRL',
+		key = "F" .. tostring(i),
+		mods = "CTRL",
 		action = act.ActivateTab(i - 1),
 	})
 end

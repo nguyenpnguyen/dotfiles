@@ -15,13 +15,13 @@
     "modules-right": [
         "custom/wlsunset",
         "idle_inhibitor",
-        "pulseaudio",
-        "backlight",
-        "network",
         "cpu",
         "memory",
         "disk",
         "temperature",
+        "network",
+        "pulseaudio",
+        "backlight",
         "battery",
         "tray",
         "clock",
@@ -67,7 +67,7 @@
     },
     "disk": {
         "interval": 30,
-        "format": " {used}",
+        "format": "{used} ",
         "path": "/home",
         "tooltip": true,
         "tooltip-format": "{used}/{total} => {path} {percentage_used}%"
@@ -162,7 +162,7 @@
             "warning": 20,
             "critical": 10
         },
-        "format": "{icon} {capacity}%",
+        "format": "{capacity}% {icon} ",
         "format-icons": [
             "",
             "",
@@ -175,7 +175,8 @@
         "tooltip": true
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        // "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{signalStrength}% ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
