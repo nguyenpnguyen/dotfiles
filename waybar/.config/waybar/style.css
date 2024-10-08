@@ -3,7 +3,7 @@
 /* Global */
 * {
   font-family: "NotoSans Nerd Font";
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border-radius: 0.2rem;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -12,6 +12,7 @@
   margin-left: 0.2rem;
   margin-right: 0.2rem;
   padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
   background-color: shade(@base, 0.5);
 }
 
@@ -68,8 +69,8 @@ window>box {
 }
 
 #workspaces button {
-  padding-right: 0.6rem;
-  padding-left: 0.6rem;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   color: @red;
@@ -151,6 +152,8 @@ tooltip label {
 
 #clock {
   color: @rosewater;
+  font-weight: bold ;
+  font-size:1.1rem;
 }
 
 #idle_inhibitor {

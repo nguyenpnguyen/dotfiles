@@ -1,8 +1,8 @@
 {
     "layer": "top",
-    "position": "bottom",
+    "position": "top",
     "height": 30,
-    "spacing": 4,
+    "spacing": 2,
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window",
@@ -12,9 +12,10 @@
         // "custom/media"
         "sway/window"
     ],
+    "modules-center": [
+        "clock"
+    ],
     "modules-right": [
-        "custom/wlsunset",
-        "idle_inhibitor",
         "cpu",
         "memory",
         "disk",
@@ -22,9 +23,10 @@
         "network",
         "pulseaudio",
         "backlight",
-        "battery",
+        "custom/wlsunset",
+        "idle_inhibitor",
         "tray",
-        "clock",
+        "battery",
         "custom/notification"
     ],
     "hyprland/workspaces": {
