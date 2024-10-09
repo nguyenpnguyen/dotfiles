@@ -172,8 +172,8 @@
             "",
             ""
         ],
-        "format-full": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
         "tooltip": true
     },
     "network": {
