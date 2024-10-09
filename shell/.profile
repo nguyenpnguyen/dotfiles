@@ -7,6 +7,9 @@ export TERM='xterm-256color'
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+alias ff="fastfetch"
+alias myip='curl ipinfo.io/ip'
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
