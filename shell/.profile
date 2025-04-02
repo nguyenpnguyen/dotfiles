@@ -41,7 +41,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Neovim
-PATH="$PATH:/opt/nvim-linux64/bin"
+# PATH="$PATH:/opt/nvim-linux64/bin"
 
 # Nodejs
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -61,7 +61,7 @@ PATH=$BUN_INSTALL/bin:$PATH
 
 # Go
 PATH=$PATH:/usr/local/go/bin
-PATH=$GOPATH/bin:$PATH
+PATH=$PATH:$GOPATH/bin
 export GOPATH=$HOME/go/bin
 
 # Rust
@@ -82,6 +82,9 @@ export PATH=$PATH:/opt/maven/apache-maven-3.9.6/bin
 export LUAINC=/usr/include/lua5.4/
 PATH=$PATH:/usr/local/luarocks/bin
 PATH=$PATH:$HOME/.luarocks/bin
+
+# Python
+export PATH=$PATH:/opt/anaconda/bin
 
 # Perl
 # PATH="/home/nguyen/perl5/bin${PATH:+:${PATH}}"; export PATH;
