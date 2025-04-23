@@ -174,8 +174,7 @@ return {
 			-- Lua
 			"stylua",
 			-- Python
-			--[[ "black",
-			"flake8", ]]
+			"ruff",
 			-- Go
 			"goimports",
 			"golangci-lint",

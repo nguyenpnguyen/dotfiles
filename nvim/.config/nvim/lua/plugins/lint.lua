@@ -11,7 +11,7 @@ return {
 				--[[ javascript = { "eslint_d" },
 				typescript = { "eslint_d" }, ]]
 				css = { "stylelint" },
-				python = { "flake8" },
+				python = { "ruff" },
 			}
 
 			-- To allow other plugins to add linters to require('lint').linters_by_ft,
