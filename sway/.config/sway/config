@@ -1,5 +1,6 @@
 # Exec on startup
-exec fcitx5 & wl-paste --watch cliphist store & swaync & nm-applet & firefox & wezterm & /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec fcitx5 & nm-applet
+# & wl-paste --watch cliphist store & swaync & firefox & wezterm & /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 #exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 ### Variables
@@ -13,11 +14,12 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # Recommends: foot
+# set $term flatpak run org.wezfurlong.wezterm
 set $term foot
 
 set $menu "rofi -combi-modi drun,run,window -show combi -show-icons"
 
-set $file-manager nautilus
+set $file-manager thunar
 
 bar {
   swaybar_command waybar 
@@ -116,7 +118,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
         -t warning \
         -m 'What do you want to do?' \
         -b 'Poweroff' 'systemctl poweroff' \
-        -b 'Reboot' 'systemctl reboot'
+        -b 'Reboot' 'systemctl reboot' \
+        -b 'Lock' 'lock'
 #
 # Moving around:
 #
@@ -176,21 +179,32 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="Brave-browser"] workspace number 1
     assign [app_id="org.wezfurlong.wezterm"] workspace number 2
     assign [app_id="foot"] workspace number 2
-    assign [class="jetbrains-idea"] workspace number 2
-    assign [class="code"] workspace number 2
-    assign [class="obsidian"] workspace number 3
+    assign [class="jetbrains-idea"] workspace number 3
+    assign [class="jetbrains-idea-ce"] workspace number 3
+    assign [class="jetbrains-pycharm"] workspace number 3
+    assign [class="jetbrains-pycharm-ce"] workspace number 3
+    assign [class="Code"] workspace number 3
+    assign [class="obsidian"] workspace number 4
     assign [class="StarUML"] workspace number 4
-    assign [app_id="teams-for-linux"] workspace number 4
+    assign [app_id="teams-for-linux"] workspace number 5
+    assign [app_id="com.github.IsmaelMartinez.teams_for_linux"] workspace number 5
     assign [app_id="thunderbird"] workspace number 6
     assign [class="thunderbird"] workspace number 6
+    assign [app_id="eu.betterbird.Betterbird"] workspace number 6
     assign [class="discord"] workspace number 7
+    assign [app_id="vesktop"] workspace number 7
     assign [class="Spotify"] workspace number 8
     assign [class="steam"] workspace number 9
 
-    # layout rules
-    for_window [app_id="Nautilus"] floating enable
-    for_window [class="Bitwarden"] floating enable
+    # Proton Mail
+    for_window [instance="crx_jnpecgipniidlgicjocehkhajgdnjekh"] move container to workspace number 6
 
+    # Apple music 
+    for_window [instance="crx_blgdilankhbcpipclgpdndahbehalgkh"] move container to workspace number 8
+
+    # layout rules
+    for_window [app_id="thunar"] floating enable
+    for_window [class="Bitwarden"] floating enable
 
 # apply mark for Xwayland and wayland native browser windows
     for_window [class="Chromium-browser"] mark Browser

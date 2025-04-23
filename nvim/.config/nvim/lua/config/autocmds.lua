@@ -1,5 +1,5 @@
 -- Set python indent to 4 spaces
---[[ vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
 	desc = "Set indent for Python files to 4 spaces",
 	pattern = "python",
 	callback = function()
@@ -8,7 +8,7 @@
 		vim.bo.tabstop = 4
 		vim.bo.shiftwidth = 4
 	end,
-}) ]]
+})
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

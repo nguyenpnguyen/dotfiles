@@ -31,6 +31,25 @@ return {
 			return "%2l:%-2v"
 		end
 
+		require("mini.pairs").setup()
+
+		require("mini.tabline").setup()
+
+		require("mini.diff").setup()
+
+		-- Mini Map
+		local minimap = require("mini.map")
+		minimap.setup()
+		vim.keymap.set("n", "<leader>mt", function()
+			minimap.toggle()
+		end, { desc = "Toggle minimap" })
+		vim.keymap.set("n", "<leader>mf", function()
+			minimap.toggle_focus()
+		end, { desc = "Toggle focus minimap" })
+		vim.keymap.set("n", "<leader>mr", function()
+			minimap.refresh()
+		end, { desc = "Refresh minimap" })
+
 		-- ... and there is more!
 		--  Check out: https://github.com/echasnovski/mini.nvim
 	end,

@@ -24,9 +24,10 @@ return {
 			}
 		end,
 		formatters_by_ft = {
-			c = { "clangd" },
-			cpp = { "clangd" },
+			-- c = { "clangd" },
+			-- cpp = { "clangd" },
 			lua = { "stylua" },
+			python = { "ruff" },
 			javascript = { "prettierd", "prettier" },
 			typescript = { "prettierd", "prettier" },
 			jsx = { "prettierd", "prettier", "rustywind" },

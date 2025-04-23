@@ -44,9 +44,14 @@ fi
 # PATH="$PATH:/opt/nvim-linux64/bin"
 
 # Nodejs
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Homebrew nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # pnpm
 export PNPM_HOME="/home/nguyen/.local/share/pnpm"
@@ -56,59 +61,20 @@ case ":$PATH:" in
 esac
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-PATH=$BUN_INSTALL/bin:$PATH
+# export BUN_INSTALL="$HOME/.bun"
+# PATH=$BUN_INSTALL/bin:$PATH
 
 # Go
-PATH=$PATH:/usr/local/go/bin
+# PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$GOPATH/bin
 export GOPATH=$HOME/go/bin
 
 # Rust
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 PATH=$PATH:$HOME/.cargo/bin
-
-# Java
-export JAVA_HOME=$HOME/.sdkman/candidates/java/current
-export JAVA=$JAVA_HOME/bin
-# export PATH_TO_FX=/opt/jvm/javafx-sdk-22.0.1
-# PATH=$JAVA_HOME/bin:$PATH
-PATH=$PATH_TO_FX/lib:$PATH
-
-# Maven
-export PATH=$PATH:/opt/maven/apache-maven-3.9.6/bin 
-
-# Lua
-export LUAINC=/usr/include/lua5.4/
-PATH=$PATH:/usr/local/luarocks/bin
-PATH=$PATH:$HOME/.luarocks/bin
-
-# Python
-export PATH=$PATH:/opt/anaconda/bin
-
-# Perl
-# PATH="/home/nguyen/perl5/bin${PATH:+:${PATH}}"; export PATH;
-# PERL5LIB="/home/nguyen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-# PERL_LOCAL_LIB_ROOT="/home/nguyen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-# PERL_MB_OPT="--install_base \"/home/nguyen/perl5\""; export PERL_MB_OPT;
-# PERL_MM_OPT="INSTALL_BASE=/home/nguyen/perl5"; export PERL_MM_OPT;
 
 # Pfetch-rs
 export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
-
-# Tex
-# MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
-# INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
-# PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
-
-# Exercism
-# if [ -f ~/.config/exercism/exercism_completion.bash ]; then
-#    source ~/.config/exercism/exercism_completion.bash
-# fi
-
-export PATH
-# export MANPATH
-# export INFOPATH
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -119,9 +85,8 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# Zoxide
-eval "$(zoxide init bash)"
+# Brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/var/home/nguyen/.lmstudio/bin"

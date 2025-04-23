@@ -4,8 +4,8 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+map("n", "<leader>de", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -35,3 +35,4 @@ map("n", "<A-j>", ":m .+1<CR>==") -- move line up(n)
 map("n", "<A-k>", ":m .-2<CR>==") -- move line down(n)
 map("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
 map("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
+

@@ -124,7 +124,7 @@ return {
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
 			-- C(++)
-			clangd = {},
+			-- clangd = {},
 			-- Go
 			gopls = {},
 			-- Python
@@ -142,7 +142,7 @@ return {
 			cssls = { capabilities = capabilities },
 			html = { capabilities = capabilities },
 			jsonls = { capabilities = capabilities },
-			htmx = {},
+			-- htmx = {},
 			-- Lua
 			lua_ls = {
 				settings = {
