@@ -6,7 +6,7 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
-				go = { "golangci-lint" },
+				-- go = { "golangci-lint" },
 				markdown = { "markdownlint" },
 				--[[ javascript = { "eslint_d" },
 				typescript = { "eslint_d" }, ]]

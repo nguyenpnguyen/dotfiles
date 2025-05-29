@@ -4,13 +4,17 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
 selected=$(
-    (find ~/work ~/personal -mindepth 1 -maxdepth 1 -type d \
+    (find ~/work ~/personal ~/.config -mindepth 1 -maxdepth 1 -type d \
       -not -path '*/.git*' \
       -not -path '*/.vscode*' \
+      -not -path '*/.idea*' \
+      -not -path '*/.ipynb_checkpoints*' \
       -not -path '*/node_modules*'; \
     find ~/school -mindepth 2 -maxdepth 3 -type d \
       -not -path '*/.git*' \
       -not -path '*/.vscode*' \
+      -not -path '*/.idea*' \
+      -not -path '*/.ipynb_checkpoints*' \
       -not -path '*/node_modules*') | fzf -m
     )
 fi
