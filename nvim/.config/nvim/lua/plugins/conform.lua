@@ -37,6 +37,7 @@ return {
 			css = { "stylelint" },
 			yaml = { "prettierd", "prettier" },
 			json = { "prettierd", "prettier" },
+			rust = { "rustfmt" },
 			markdown = { "markdownlint" },
 		},
 	},

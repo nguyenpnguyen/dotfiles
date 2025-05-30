@@ -118,7 +118,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
         -m 'What do you want to do?' \
         -b 'Poweroff' 'systemctl poweroff' \
         -b 'Reboot' 'systemctl reboot' \
-        -b 'Lock' 'lock'
+        -b 'Lock' 'swaylock & systemctl suspend'
 #
 # Moving around:
 #
@@ -188,6 +188,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="obsidian"] workspace number 4
     assign [class="StarUML"] workspace number 4
     assign [app_id="teams-for-linux"] workspace number 5
+    assign [class="teams-for-linux"] workspace number 5
     assign [app_id="com.github.IsmaelMartinez.teams_for_linux"] workspace number 5
     assign [app_id="thunderbird"] workspace number 6
     assign [class="thunderbird"] workspace number 6
@@ -201,6 +202,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     for_window [app_id="thunar"] floating enable
     for_window [app_id="org.kde.dolphin"] floating enable
     for_window [class="Bitwarden"] floating enable
+    for_window [app_id="blueman-manager"] floating enable
 
 # apply mark for Xwayland and wayland native browser windows
     for_window [class="Chromium-browser"] mark Browser

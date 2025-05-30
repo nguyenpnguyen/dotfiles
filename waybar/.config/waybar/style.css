@@ -2,7 +2,7 @@
 
 /* Global */
 * {
-  font-family: "NotoSans Nerd Font";
+  font-family: "JetBrains Mono Nerd Font";
   font-size: 1.1rem;
   border-radius: 0.2rem;
   transition-property: background-color;
@@ -152,8 +152,8 @@ tooltip label {
 
 #clock {
   color: @rosewater;
-  font-weight: bold ;
-  font-size:1.1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 #idle_inhibitor {

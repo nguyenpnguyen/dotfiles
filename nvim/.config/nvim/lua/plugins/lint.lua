@@ -9,8 +9,8 @@ return {
 				-- go = { "golangci-lint" },
 				markdown = { "markdownlint" },
 				--[[ javascript = { "eslint_d" },
-				typescript = { "eslint_d" }, ]]
-				css = { "stylelint" },
+				typescript = { "eslint_d" },
+				css = { "stylelint" },]]
 				python = { "ruff" },
 			}
 

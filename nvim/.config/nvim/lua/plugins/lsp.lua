@@ -128,7 +128,7 @@ return {
 			-- Go
 			gopls = {},
 			-- Python
-			pyright = {},
+			ruff = {},
 			-- Web
 			ts_ls = {},
 			--[[ eslint = {
@@ -142,6 +142,8 @@ return {
 			cssls = { capabilities = capabilities },
 			html = { capabilities = capabilities },
 			jsonls = { capabilities = capabilities },
+			-- Rust
+			rust_analyzer = { capabilities = capabilities },
 			-- htmx = {},
 			-- Lua
 			lua_ls = {
@@ -183,11 +185,8 @@ return {
 			-- Web
 			"rustywind",
 			"prettierd",
+			"rust_analyzer",
 			-- "eslint_d",
-			"stylelint",
-			"htmlbeautifier",
-			-- Java
-			"google-java-format",
 			-- Misc
 			"markdownlint",
 		})
