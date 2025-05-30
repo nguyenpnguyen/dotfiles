@@ -1,6 +1,5 @@
 # Exec on startup
-exec fcitx5 & nm-applet
-# & wl-paste --watch cliphist store & swaync & firefox & wezterm & /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec fcitx5 & nm-applet & wl-paste --watch cliphist store & /usr/lib/hyprpolkitagent/hyprpolkitagent & swaync
 
 #exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 ### Variables
@@ -15,11 +14,11 @@ set $right l
 # Your preferred terminal emulator
 # Recommends: foot
 # set $term flatpak run org.wezfurlong.wezterm
-set $term foot
+set $term ghostty
 
 set $menu "rofi -combi-modi drun,run,window -show combi -show-icons"
 
-set $file-manager thunar
+set $file-manager dolphin 
 
 bar {
   swaybar_command waybar 
@@ -68,11 +67,11 @@ workspace 8 output eDP-1
 exec swayidle -w \
         timeout 240 'swaydim' \
             resume 'swaydim' \
-        timeout 270 'swaylock -f' \
+        timeout 270 'swaylock' \
         timeout 300 'swaymsg "output * power off"' \
             resume 'swaymsg "output * power on"'  \
         timeout 360 'systemctl suspend' \
-        before-sleep 'swaylock -f' \
+        before-sleep 'swaylock' \
 
 # Disable displays on idle
 # exec command -v swayidle >/dev/null && swayidle -w \
@@ -179,6 +178,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="Brave-browser"] workspace number 1
     assign [app_id="brave-browser"] workspace number 1
     assign [app_id="org.wezfurlong.wezterm"] workspace number 2
+    assign [app_id="com.mitchellh.ghostty"] workspace number 2
     assign [app_id="foot"] workspace number 2
     assign [class="jetbrains-idea"] workspace number 3
     assign [class="jetbrains-idea-ce"] workspace number 3
@@ -197,14 +197,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [class="Spotify"] workspace number 8
     assign [class="steam"] workspace number 9
 
-    # Proton Mail
-    for_window [instance="crx_jnpecgipniidlgicjocehkhajgdnjekh"] move container to workspace number 6
-
-    # Apple music 
-    for_window [instance="crx_blgdilankhbcpipclgpdndahbehalgkh"] move container to workspace number 8
-
     # layout rules
     for_window [app_id="thunar"] floating enable
+    for_window [app_id="org.kde.dolphin"] floating enable
     for_window [class="Bitwarden"] floating enable
 
 # apply mark for Xwayland and wayland native browser windows

@@ -11,11 +11,6 @@ alias ff="fastfetch"
 alias myip='curl ipinfo.io/ip'
 alias vim="nvim"
 
-# Enter toolbox (Fedora Atomic)
-if [[ ! -n $TOOLBOX_PATH ]]; then
-    exec toolbox enter arch-toolbox-latest
-fi
-
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -88,8 +83,3 @@ function y() {
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/var/home/nguyen/.lmstudio/bin"
-
-# fzf
-export PATH="$PATH:$HOME/.local/share/fzf/bin"
-source $HOME/.local/share/fzf/shell/completion.zsh
-source $HOME/.local/share/fzf/shell/key-bindings.zsh

@@ -30,7 +30,7 @@
         "custom/notification"
     ],
     "hyprland/workspaces": {
-        "disable-scroll": true,
+        "disable-scroll": false,
         "all-outputs": true,
         "warp-on-scroll": false,
         "format": "{name}: {icon}",
@@ -43,7 +43,9 @@
             "urgent": "",
             "focused": "",
             "default": ""
-        }
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
     },
     "sway/workspaces": {
         "disable-scroll": true,
