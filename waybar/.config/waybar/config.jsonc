@@ -1,6 +1,6 @@
 {
     "layer": "top",
-    "position": "bottom",
+    "position": "top",
     "height": 30,
     "spacing": 2,
     "modules-left": [
@@ -9,8 +9,8 @@
         "sway/workspaces",
         "sway/mode",
         "sway/scratchpad",
-        // "custom/media"
         "sway/window"
+        //"custom/media"
     ],
     "modules-center": [
         "clock"
@@ -140,9 +140,7 @@
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
         "format-icons": [
-            "",
-            "",
-            ""
+            ""
         ]
     },
     "backlight": {

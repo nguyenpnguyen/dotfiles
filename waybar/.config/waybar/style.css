@@ -3,8 +3,8 @@
 /* Global */
 * {
   font-family: "JetBrains Mono Nerd Font";
-  font-size: 1.1rem;
-  border-radius: 0.2rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
   transition-property: background-color;
   transition-duration: 0.5s;
   padding-left: 0.1rem;
@@ -54,9 +54,9 @@
 }
 
 /* Bar*/
-/*window#waybar {*/
-/*  background-color: transparent;*/
-/*}*/
+window#waybar {
+  background-color: transparent;
+}
 
 window>box {
   background-color: transparent;
@@ -84,6 +84,9 @@ window>box {
 
 #workspaces button.focused {
   color: @blue;
+  border-radius: 18px;
+  border-color: @rosewater;
+  border-radius: 5px 5px 5px 5px;
 }
 
 #workspaces button:hover {
@@ -153,7 +156,7 @@ tooltip label {
 #clock {
   color: @rosewater;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 #idle_inhibitor {
