@@ -318,7 +318,7 @@ for_window [shell="xwayland"] title_format "[XWayland] %title"
 for_window [class="^.*"] focus
 
 # Lock screen after closing lid
-# bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:on exec swaylock & systemctl suspend
 # bindswitch --reload --locked lid:off output eDP-1 enable
 
 bindsym {
