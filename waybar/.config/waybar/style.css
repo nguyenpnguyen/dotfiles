@@ -156,7 +156,6 @@ tooltip label {
 #clock {
   color: @rosewater;
   font-weight: bold;
-  font-size: 1rem;
 }
 
 #idle_inhibitor {
@@ -208,4 +207,9 @@ tooltip label {
 
 #custom-pomo.finished {
   color: @red;
+}
+
+#custom-notification {
+  color: @lavender;
+  font-weight: bold;
 }

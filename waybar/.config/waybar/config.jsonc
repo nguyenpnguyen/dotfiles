@@ -209,7 +209,7 @@
         "on-click": "pavucontrol"
     },
     "custom/notification": {
-        "tooltip": false,
+        "tooltip": true,
         "format": "{} {icon}",
         "format-icons": {
             "notification": "<span foreground='red'><sup></sup></span>",
