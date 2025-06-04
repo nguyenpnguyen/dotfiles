@@ -193,6 +193,10 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [app_id="thunderbird"] workspace number 6
     assign [class="thunderbird"] workspace number 6
     assign [app_id="eu.betterbird.Betterbird"] workspace number 6
+
+    # Proton Mail PWA
+    assign [app_id="brave-jnpecgipniidlgicjocehkhajgdnjekh-Default"] workspace number 6
+
     assign [class="discord"] workspace number 7
     assign [app_id="vesktop"] workspace number 7
     assign [class="Spotify"] workspace number 8
