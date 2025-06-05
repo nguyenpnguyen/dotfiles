@@ -18,7 +18,7 @@ set $term ghostty
 
 set $menu "rofi -combi-modi drun,run,window -show combi -show-icons"
 
-set $file-manager dolphin 
+set $file-manager thunar 
 
 bar {
   swaybar_command waybar 
