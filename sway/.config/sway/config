@@ -42,7 +42,7 @@ gaps inner 4
 
 ### Output configuration
 
-output * bg ~/Pictures/wallpapers/pastel-blue-pink.jpg fill
+output * bg ~/Pictures/wallpapers/catppuccin-coffee.png fill
 #
 # Example configuration:
 #
