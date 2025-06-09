@@ -11,3 +11,7 @@ vscode/.config/Code\ -\ OSS/*
 !vscode/.config/Code\ -\ OSS/User
 vscode/.config/Code\ -\ OSS/User/*
 !vscode/.config/Code\ -\ OSS/User/*.json
+
+# Fish
+fish/.config/fish/functions/*
+fish/.config/fish/fish_variables
