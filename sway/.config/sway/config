@@ -197,6 +197,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # Proton Mail PWA
     assign [app_id="FFPWA-01JX20VNSZEVNGZ9JCNGNM2VRP"] workspace number 6
 
+    # Zalo PWA
+    assign [app_id="FFPWA-01JX9Q9QJHSNR9VBKBHZGW5J21"] workspace number 6
+
     assign [class="discord"] workspace number 7
     assign [app_id="vesktop"] workspace number 7
     assign [class="Spotify"] workspace number 8
