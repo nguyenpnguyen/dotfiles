@@ -172,7 +172,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # We just use 1-10 as the default.
 
     # Assign applications to specific workspaces
-    assign [app_id="zen-alpha"] workspace number 1
+    assign [app_id="zen"] workspace number 1
     assign [app_id="firefox"] workspace number 1
     assign [class="floorp"] workspace number 1
     assign [class="Brave-browser"] workspace number 1
