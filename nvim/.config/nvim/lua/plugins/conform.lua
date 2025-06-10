@@ -39,6 +39,7 @@ return {
 			json = { "prettierd", "prettier" },
 			rust = { "rustfmt" },
 			markdown = { "markdownlint" },
+			tex = { "tex-fmt" },
 		},
 	},
 }
