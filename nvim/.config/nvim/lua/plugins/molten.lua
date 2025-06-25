@@ -10,28 +10,34 @@ return {
 		vim.g.molten_wrap_output = true
 		vim.g.molten_virt_text_output = true
 		vim.g.molten_virt_lines_off_by_1 = true
+		vim.keymap.set("n", "<localleader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
 		vim.keymap.set(
 			"n",
 			"<localleader>e",
 			":MoltenEvaluateOperator<CR>",
-			{ desc = "evaluate operator", silent = true }
+			{ silent = true, desc = "run operator selection" }
 		)
+		vim.keymap.set("n", "<localleader>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
 		vim.keymap.set(
 			"n",
-			"<localleader>os",
-			":noautocmd MoltenEnterOutput<CR>",
-			{ desc = "open output window", silent = true }
+			"<localleader>rr",
+			":MoltenReevaluateCell<CR>",
+			{ silent = true, desc = "re-evaluate cell" }
 		)
-		vim.keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>", { desc = "re-eval cell", silent = true })
 		vim.keymap.set(
 			"v",
 			"<localleader>r",
 			":<C-u>MoltenEvaluateVisual<CR>gv",
-			{ desc = "execute visual selection", silent = true }
+			{ silent = true, desc = "evaluate visual selection" }
 		)
-		vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>", { desc = "close output window", silent = true })
-		vim.keymap.set("n", "<localleader>md", ":MoltenDelete<CR>", { desc = "delete Molten cell", silent = true })
-
+		vim.keymap.set("n", "<localleader>rd", ":MoltenDelete<CR>", { silent = true, desc = "molten delete cell" })
+		vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>", { silent = true, desc = "hide output" })
+		vim.keymap.set(
+			"n",
+			"<localleader>os",
+			":noautocmd MoltenEnterOutput<CR>",
+			{ silent = true, desc = "show/enter output" }
+		)
 		-- if you work with html outputs:
 		vim.keymap.set(
 			"n",

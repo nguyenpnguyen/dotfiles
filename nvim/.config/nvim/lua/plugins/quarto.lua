@@ -5,7 +5,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	opts = {
-		ft = { "quarto", "markdown", "rmd", "r", "python", "rust" },
+		ft = { "quarto", "markdown", "md", "rmd", "r", "python", "rust" },
 		lspFeatures = {
 			languages = { "python", "rust" },
 			enabled = true,

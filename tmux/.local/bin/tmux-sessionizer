@@ -16,7 +16,7 @@ selected=$(
       -not -path '*/.idea*' \
       -not -path '*/.ipynb_checkpoints*' \
       -not -path '*/node_modules*'; \
-    find ~/.dotfiles -mindepth 3 -maxdepth 3 -type d \
+    find ~/dotfiles -mindepth 3 -maxdepth 3 -type d \
       -not -path '*/.git*' \
       -not -path '*/.vscode*' \
       -not -path '*/.idea*' \
