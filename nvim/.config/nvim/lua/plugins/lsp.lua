@@ -129,6 +129,15 @@ return {
 			gopls = {},
 			-- Python
 			ruff = {},
+			basedpyright = {
+				analysis = {
+					autoImportCompletions = true,
+					autoSearchPaths = true,
+					diagnosticMode = "workspace",
+					typeCheckingMode = "basic", -- standard, strict, all, off, basic
+				},
+				-- python = { venvPath = ".venv/bin/python" }, -- this is a bad config
+			},
 			-- Web
 			ts_ls = {},
 			--[[ eslint = {
