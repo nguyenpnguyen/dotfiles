@@ -14,7 +14,7 @@ set $right l
 # Your preferred terminal emulator
 # Recommends: foot
 # set $term flatpak run org.wezfurlong.wezterm
-set $term ghostty
+set $term foot
 
 set $menu "rofi -combi-modi drun,run,window -show combi -show-icons"
 
