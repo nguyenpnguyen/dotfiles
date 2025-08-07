@@ -68,8 +68,6 @@ exec swayidle -w \
         timeout 240 'swaydim' \
             resume 'swaydim' \
         timeout 270 'swaylock' \
-        timeout 300 'swaymsg "output * power off"' \
-            resume 'swaymsg "output * power on"'  \
         timeout 360 'systemctl suspend'
         # before-sleep 'swaylock' \
 

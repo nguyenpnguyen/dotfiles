@@ -12,3 +12,5 @@
 	gpgsign = true
 [tag]
 	gpgSign = true
+[credential]
+	helper = store

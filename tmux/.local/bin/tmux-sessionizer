@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
 selected=$(
-    (find ~/work ~/personal ~/.config -mindepth 1 -maxdepth 1 -type d \
+    (find ~/work ~/personal ~/.config -mindepth 1 -maxdepth 2 -type d \
       -not -path '*/.git*' \
       -not -path '*/.vscode*' \
       -not -path '*/.idea*' \
