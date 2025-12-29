@@ -45,9 +45,24 @@
 #battery,
 #custom-wlsunset,
 #custom-media,
-#tray,
 #disk,
 #custom-pacman,
+
+#tray {
+  color: @text;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+#tray menu * {
+  color: @subtext1;
+}
+
+#tray menu *:hover {
+  color: @base;
+  background: @blue
+}
+
 #custom-scratchpad-indicator {
   padding-left: 0.6rem;
   padding-right: 0.6rem;

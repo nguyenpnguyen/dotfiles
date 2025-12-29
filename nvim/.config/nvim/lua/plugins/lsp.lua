@@ -129,14 +129,25 @@ return {
 			gopls = {},
 			-- Python
 			ruff = {},
-			basedpyright = {
-				analysis = {
-					autoImportCompletions = true,
-					autoSearchPaths = true,
-					diagnosticMode = "workspace",
-					typeCheckingMode = "basic", -- standard, strict, all, off, basic
+			ty = {
+				settings = {
+					ty = {
+						root_markers = {
+							"ty.toml",
+							"pyproject.toml",
+							"setup.py",
+							"setup.cfg",
+							"requirements.txt",
+							".git",
+							".venv",
+							"uv.lock",
+						},
+						diagnosticMode = "workspace",
+						experimental = {
+							autoImport = true,
+						},
+					},
 				},
-				-- python = { venvPath = ".venv/bin/python" }, -- this is a bad config
 			},
 			-- Web
 			ts_ls = {},
@@ -166,7 +177,7 @@ return {
 				},
 			},
 			-- Misc
-			marksman = {},
+			-- marksman = {},
 		}
 
 		-- Ensure the servers and tools above are installed
@@ -197,7 +208,7 @@ return {
 			"rust_analyzer",
 			-- "eslint_d",
 			-- Misc
-			"markdownlint",
+			-- "markdownlint",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

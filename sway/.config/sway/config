@@ -14,7 +14,7 @@ set $right l
 # Your preferred terminal emulator
 # Recommends: foot
 # set $term flatpak run org.wezfurlong.wezterm
-set $term foot
+set $term ghostty
 
 set $menu "rofi -combi-modi drun,run,window -show combi -show-icons"
 
@@ -47,8 +47,11 @@ output * bg ~/Pictures/wallpapers/catppuccin-coffee.png fill
 # Example configuration:
 #
 output HDMI-A-1 resolution 1920x1200@74.930Hz position 1920,0
+# output HDMI-A-1 resolution 1920x1080@60Hz position 0,0 scale 1.0
 
+# main laptop screen
 output eDP-1 resolution 1920x1200@60.001Hz position 0,0 scale 1.0 
+
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # Pin workspaces to output
