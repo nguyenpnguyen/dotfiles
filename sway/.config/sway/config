@@ -192,6 +192,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [app_id="teams-for-linux"] workspace number 5
     assign [class="teams-for-linux"] workspace number 5
     assign [app_id="com.github.IsmaelMartinez.teams_for_linux"] workspace number 5
+    assign [class="Slack"] workspace number 5
     assign [app_id="thunderbird"] workspace number 6
     assign [class="thunderbird"] workspace number 6
     assign [app_id="eu.betterbird.Betterbird"] workspace number 6
