@@ -14,4 +14,12 @@ vscode/.config/Code\ -\ OSS/User/*
 
 # Fish
 fish/.config/fish/functions/*
-fish/.config/fish/fish_variables
+fish/.config/fish/fish_variables*
+fish/.config/fish/fishd.*
+# Ignore directories managed by a plugin manager or considered local
+fish/.config/fish/completions/
+fish/.config/fish/conf.d/
+fish/.config/fish/functions/
+
+# Opencode
+opencode/.config/opencode/node_modules

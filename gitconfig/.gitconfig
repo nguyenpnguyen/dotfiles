@@ -1,8 +1,8 @@
 [user]
 	name = Nguyen Phuc Nguyen 
-	email = nguyen.pn@proton.me
+	email = n.phucnguyen@outlook.com
 	username = nguyenpnguyen
-	signingkey = D6D0E4C7C5ADC0C1
+	signingkey = 82F05A8A9E7DB9E1
 [core]
 	editor = nvim
 
