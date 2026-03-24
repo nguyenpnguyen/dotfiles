@@ -17,8 +17,7 @@
         },
         "plan": {
             "mode": "primary",
-            "model": "github-copilot/gpt-5.4",
-            "temperature": 0.6,
+            "model": "github-copilot/claude-sonnet-4.6",
             "tools": {
                 "write": false,
                 "edit": false,
