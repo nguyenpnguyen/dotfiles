@@ -9,7 +9,7 @@ return {
 				filetypes = { "markdown", "quarto", "vimwiki" },
 			},
 		},
-		backend = "ueberzug", -- can be "ueberzug" or "magick_cli"
+		backend = "kitty",
 		max_width = 100,
 		max_height = 12,
 		max_height_window_percentage = math.huge,

@@ -2,7 +2,7 @@
 disable: false
 description: UI/UX design, review, and implementation. Use for styling, responsive design, component architecture and visual polish.
 mode: subagent
-model: github-copilot/gemini-3.1-pro
+model: github-copilot/gemini-3.1-pro-preview
 temperature: 0.7
 tools:
   write: true

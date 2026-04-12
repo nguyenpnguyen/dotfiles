@@ -15,3 +15,4 @@ set -gx OPENCODE_EXPERIMENTAL_LSP_TOOL true
 set -gx OPENCODE_ENABLE_EXA true
 # opencode
 fish_add_path /home/nguyen/.opencode/bin
+

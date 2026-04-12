@@ -3,7 +3,7 @@ disable: false
 description: Fast implementation specialist. Receives complete context and task spec, executes code changes efficiently.
 mode: subagent
 model: github-copilot/gpt-5-mini
-reasoning_effort: xhigh
+reasoning_effort: medium
 temperature: 0.3
 tools:
   write: true
