@@ -184,6 +184,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     assign [app_id="org.wezfurlong.wezterm"] workspace number 2
     assign [app_id="com.mitchellh.ghostty"] workspace number 2
     assign [app_id="foot"] workspace number 2
+    assign [app_id="dev.zed.Zed"] workspace number 3
     assign [class="jetbrains-idea"] workspace number 3
     assign [class="jetbrains-idea-ce"] workspace number 3
     assign [class="jetbrains-pycharm"] workspace number 3

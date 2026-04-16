@@ -6,6 +6,8 @@ export TERM='xterm-256color'
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+export KEYTIMEOUT=1
+
 alias ff="fastfetch"
 alias myip='curl ipinfo.io/ip'
 alias vim="nvim"
