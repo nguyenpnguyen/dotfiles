@@ -1,6 +1,5 @@
 # environment variables:
 export XDG_CONFIG_DIR=$HOME/.config
-export _JAVA_AWT_WM_NONREPARENTING=1
 export MOZ_ENABLE_WAYLAND=1
 
 export TERM='xterm-256color'
@@ -14,9 +13,6 @@ alias vim="nvim"
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
     if [ -t 1 ]; then
 	bind -x '"\C-f": tmux-sessionizer'
     fi
@@ -24,10 +20,6 @@ fi
 
 # if running zsh 
 if [ -n "$ZSH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.zshrc" ]; then
-	. "$HOME/.zshrc"
-    fi
     bindkey -s ^F "tmux-sessionizer\n"
 fi
 
@@ -57,20 +49,17 @@ case ":$PATH:" in
 esac
 
 # bun
-# export BUN_INSTALL="$HOME/.bun"
-# PATH=$BUN_INSTALL/bin:$PATH
+export BUN_INSTALL="$HOME/.bun"
+PATH=$BUN_INSTALL/bin:$PATH
 
 # Go
-# PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$GOPATH/bin
 export GOPATH=$HOME/go/bin
 
 # Rust
 # . "$HOME/.cargo/env"
 PATH=$PATH:$HOME/.cargo/bin
-
-# Pfetch-rs
-export PF_INFO="ascii title os host cpu kernel pkgs de shell editor palette"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

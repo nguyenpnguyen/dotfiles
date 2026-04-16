@@ -3,42 +3,5 @@
     "permission": {
         "edit": "ask",
         "bash": "ask"
-    },
-    "agent": {
-        "build": {
-            "disable": true
-        },
-        "plan": {
-            "disable": true
-        }
-    },
-    "command": {
-        "council": {
-            "description": "Run the council consensus agent",
-            "agent": "council",
-            "template": "$ARGUMENTS"
-        }
-    },
-    "mcp": {
-        "filesystem": {
-            "type": "local",
-            "command": [
-                "/home/nguyen/mcp-servers/.venv/bin/python",
-                "/home/nguyen/mcp-servers/servers/filesystem_server.py",
-                "--transport",
-                "stdio"
-            ],
-        },
-        "context7": {
-            "type": "remote",
-            "url": "https://mcp.context7.com/mcp",
-            "headers": {
-                "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
-            }
-        },
-        "grep_app": {
-            "type": "remote",
-            "url": "https://mcp.grep.app",
-        }
     }
 }
