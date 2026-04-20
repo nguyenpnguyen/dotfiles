@@ -7,6 +7,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 export KEYTIMEOUT=1
+export OPENCODE_ENABLE_EXA=1
 
 alias ff="fastfetch"
 alias myip='curl ipinfo.io/ip'
