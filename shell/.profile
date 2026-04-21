@@ -1,18 +1,3 @@
-# environment variables:
-export XDG_CONFIG_DIR=$HOME/.config
-export MOZ_ENABLE_WAYLAND=1
-
-export TERM='xterm-256color'
-export EDITOR='nvim'
-export VISUAL='nvim'
-
-export KEYTIMEOUT=1
-export OPENCODE_ENABLE_EXA=1
-
-alias ff="fastfetch"
-alias myip='curl ipinfo.io/ip'
-alias vim="nvim"
-
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -75,3 +60,25 @@ function y() {
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/var/home/nguyen/.lmstudio/bin"
+
+# environment variables:
+export XDG_CONFIG_DIR=$HOME/.config
+export MOZ_ENABLE_WAYLAND=1
+
+export TERM='xterm-256color'
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+export KEYTIMEOUT=1
+export OPENCODE_ENABLE_EXA=1
+
+export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
+export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
+export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
+
+# Aliases
+#
+alias ff="fastfetch"
+alias myip='curl ipinfo.io/ip'
+alias vim="nvim"
+

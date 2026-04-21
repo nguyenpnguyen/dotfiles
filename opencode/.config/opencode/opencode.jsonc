@@ -15,7 +15,8 @@
                     "*": "deny"
                 },
                 "task": "allow",
-                "worktree_*": "allow"
+                "worktree_*": "allow",
+                "question": "allow"
             }
         },
         "build": {
@@ -31,7 +32,8 @@
                     "*": "deny"
                 },
                 "task": "allow",
-                "worktree_*": "allow"
+                "worktree_*": "allow",
+                "question": "allow"
             }
         },
         "coder": {
@@ -216,7 +218,8 @@
         "gh_grep_*": "deny",
         "kagi_*": "deny",
         "webfetch": "deny",
-        "worktree_*": "deny"
+        "worktree_*": "deny",
+        "question": "deny"
     },
     "instructions": [
         "./tools/philosophy.md"
