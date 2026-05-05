@@ -2,9 +2,10 @@
 	name = Nguyen Phuc Nguyen 
 	email = n.phucnguyen@outlook.com
 	username = nguyenpnguyen
-	signingkey = 82F05A8A9E7DB9E1
+	signingkey = 369B22AC075346D1
 [core]
 	editor = nvim
+	autocrlf = input
 
 [init]
 	defaultBranch = main

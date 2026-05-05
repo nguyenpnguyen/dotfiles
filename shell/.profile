@@ -22,7 +22,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Neovim
-# PATH="$PATH:/opt/nvim-linux64/bin"
+PATH="$PATH:/opt/nvim-linux64/bin"
 
 # Nodejs
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -41,12 +41,12 @@ export BUN_INSTALL="$HOME/.bun"
 PATH=$BUN_INSTALL/bin:$PATH
 
 # Go
+export GOPATH=$HOME/go
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$GOPATH/bin
-export GOPATH=$HOME/go/bin
 
 # Rust
-# . "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 PATH=$PATH:$HOME/.cargo/bin
 
 function y() {
@@ -59,7 +59,10 @@ function y() {
 }
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/var/home/nguyen/.lmstudio/bin"
+PATH="$PATH:/var/home/nguyen/.lmstudio/bin"
+
+# Opencode 
+PATH=$PATH:$HOME/.opencode/bin/
 
 # environment variables:
 export XDG_CONFIG_DIR=$HOME/.config
@@ -72,9 +75,8 @@ export VISUAL='nvim'
 export KEYTIMEOUT=1
 export OPENCODE_ENABLE_EXA=1
 
-export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
-export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
-export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
+export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 
 # Aliases
 #
@@ -82,3 +84,8 @@ alias ff="fastfetch"
 alias myip='curl ipinfo.io/ip'
 alias vim="nvim"
 
+
+. "$HOME/.local/bin/env"
+. "/home/nguyennp/.deno/env"
+
+export PATH=$PATH
