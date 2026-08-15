@@ -2,7 +2,7 @@
 	name = Nguyen Phuc Nguyen 
 	email = n.phucnguyen@outlook.com
 	username = nguyenpnguyen
-	signingkey = 369B22AC075346D1
+	signingkey = 103E47F4D29250F1
 [core]
 	editor = nvim
 	autocrlf = input

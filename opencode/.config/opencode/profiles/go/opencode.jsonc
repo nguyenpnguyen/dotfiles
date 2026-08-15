@@ -4,9 +4,9 @@
   "small_model": "opencode-go/deepseek-v4-flash",
   "agent": {
     "plan": {
-      "model": "opencode-go/mimo-v2.5-pro",
+      "model": "opencode-go/gpt-5.6-luna",
       "temperature": 0.3,
-      "reasoningEffort": "high",
+      "reasoningEffort": "xhigh",
       "textVerbosity": "low",
       "permission": {
         "edit": "deny",
@@ -169,7 +169,7 @@
       },
     },
     "reviewer": {
-      "model": "opencode-go/deepseek-v4-pro",
+      "model": "opencode-go/minimax-m3",
       "temperature": 0.1,
       "reasoningEffort": "high",
       "textVerbosity": "medium",
@@ -194,7 +194,7 @@
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
-      "enabled": false,
+      "enabled": true,
     },
     "exa": {
       "type": "remote",
@@ -204,7 +204,7 @@
     "gh_grep": {
       "type": "remote",
       "url": "https://mcp.grep.app",
-      "enabled": false,
+      "enabled": true,
     },
     "codegraph": {
       "type": "local",

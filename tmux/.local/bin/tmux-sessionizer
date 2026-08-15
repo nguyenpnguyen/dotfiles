@@ -9,18 +9,28 @@ selected=$(
       -not -path '*/.vscode*' \
       -not -path '*/.idea*' \
       -not -path '*/.ipynb_checkpoints*' \
+      -not -path '*/__pycache__*' \
       -not -path '*/node_modules*'; \
     find ~/school -mindepth 1 -maxdepth 3 -type d \
       -not -path '*/.git*' \
       -not -path '*/.vscode*' \
       -not -path '*/.idea*' \
       -not -path '*/.ipynb_checkpoints*' \
+      -not -path '*/__pycache__*' \
       -not -path '*/node_modules*'; \
-    find ~/dotfiles -mindepth 3 -maxdepth 3 -type d \
+    find ~/research -mindepth 1 -maxdepth 3 -type d \
       -not -path '*/.git*' \
       -not -path '*/.vscode*' \
       -not -path '*/.idea*' \
       -not -path '*/.ipynb_checkpoints*' \
+      -not -path '*/__pycache__*' \
+      -not -path '*/node_modules*'; \
+    find ~/.dotfiles -mindepth 3 -maxdepth 3 -type d \
+      -not -path '*/.git*' \
+      -not -path '*/.vscode*' \
+      -not -path '*/.idea*' \
+      -not -path '*/.ipynb_checkpoints*' \
+      -not -path '*/__pycache__*' \
       -not -path '*/node_modules*') | fzf -m
     )
 fi

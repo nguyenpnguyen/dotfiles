@@ -58,9 +58,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# Added by LM Studio CLI (lms)
-PATH="$PATH:/var/home/nguyen/.lmstudio/bin"
-
 # Opencode 
 PATH=$PATH:$HOME/.opencode/bin/
 
@@ -75,8 +72,8 @@ export VISUAL='nvim'
 export KEYTIMEOUT=1
 export OPENCODE_ENABLE_EXA=1
 
-export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
-export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+# export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+# export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 export GPG_TTY=$(tty)
 
 # Aliases
@@ -90,3 +87,10 @@ alias vim="nvim"
 . "/home/nguyennp/.deno/env"
 
 export PATH=$PATH
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/nguyennp/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+export PATH="$HOME/.elan/bin:$PATH"
