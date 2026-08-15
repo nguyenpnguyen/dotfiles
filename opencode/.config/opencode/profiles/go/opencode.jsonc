@@ -212,6 +212,7 @@
       "enabled": true,
     },
   },
+  "lsp": true,
   "permission": {
     "task": "deny",
     "context7_*": "deny",
