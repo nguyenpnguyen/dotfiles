@@ -21,14 +21,12 @@ map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 -- map('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 -- map('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
-map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- Navigate Neovim splits and tmux panes with the same keys.
+map("n", "<C-h>", "<cmd><C-U>TmuxNavigateLeft<cr>", { silent = true })
+map("n", "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>", { silent = true })
+map("n", "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>", { silent = true })
+map("n", "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>", { silent = true })
+map("n", "<C-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>", { silent = true })
 
 -- Move lines
 map("n", "<A-j>", ":m .+1<CR>==") -- move line up(n)
